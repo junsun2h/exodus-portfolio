@@ -1,10 +1,12 @@
 저작권 안내 — All Rights Reserved
 
-Copyright (c) 2026 junhak. All rights reserved.
+Copyright (c) 2026 ExodusStudio Co., Ltd. All rights reserved.
+저작자 / 개발: 김준학 (Junhak Kim)
 
-이 저장소는 채용 검토·기술 평가를 위해 공개한 **열람용 포트폴리오**입니다.
+이 저장소는 채용 검토·기술 평가를 위해 공개한 열람용 포트폴리오입니다.
 상용 게임 프로젝트 ExodusP1 에서 피처 단위로 발췌한 코드이며,
-저작권은 전적으로 저작권자에게 있습니다.
+저작재산권은 ExodusStudio Co., Ltd. 에 있습니다.
+공개된 코드 전부는 김준학이 직접 설계·구현한 것이며, 저작권자의 허락 하에 게시합니다.
 
 
 허용
@@ -34,12 +36,15 @@ Copyright (c) 2026 junhak. All rights reserved.
 
 English
 
-Copyright (c) 2026 junhak. All rights reserved.
+Copyright (c) 2026 ExodusStudio Co., Ltd. All rights reserved.
+Author / Developer: Junhak Kim (김준학)
 
 This repository is a view-only portfolio published for hiring review and
 technical evaluation. The code is excerpted, feature by feature, from
-ExodusP1 — a commercial game project. All rights are retained by the
-copyright holder.
+ExodusP1 — a commercial game project. Copyright is held by
+ExodusStudio Co., Ltd.; everything published here was designed and
+implemented by Junhak Kim and is posted with the copyright holder's
+permission.
 
 Permitted
   - Reading and reviewing the code and documents.
