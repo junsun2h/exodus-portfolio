@@ -1,0 +1,56 @@
+저작권 안내 — All Rights Reserved
+
+Copyright (c) 2026 junhak. All rights reserved.
+
+이 저장소는 채용 검토·기술 평가를 위해 공개한 **열람용 포트폴리오**입니다.
+상용 게임 프로젝트 ExodusP1 에서 피처 단위로 발췌한 코드이며,
+저작권은 전적으로 저작권자에게 있습니다.
+
+
+허용
+
+  - 코드와 문서를 읽고 검토하는 것
+  - 채용 절차 안에서 평가 목적으로 인용하는 것
+
+
+허용하지 않음
+
+  별도의 서면 허락 없이 다음을 할 수 없습니다.
+
+  - 복제, 배포, 재게시
+  - 2차적 저작물 작성 및 개작
+  - 상업적·비상업적을 불문한 코드의 사용
+  - 기계학습 모델의 학습 데이터로 사용
+
+
+서드파티
+
+  포함된 코드는 Unity 6, Firebase Functions v2, Odin Inspector, SimpleJSON,
+  Newtonsoft.Json, UniTask 등에 의존합니다. 각 구성요소는 해당 제공자의
+  라이선스를 따르며 이 고지의 적용을 받지 않습니다.
+
+
+────────────────────────────────────────────────────────────────────────
+
+English
+
+Copyright (c) 2026 junhak. All rights reserved.
+
+This repository is a view-only portfolio published for hiring review and
+technical evaluation. The code is excerpted, feature by feature, from
+ExodusP1 — a commercial game project. All rights are retained by the
+copyright holder.
+
+Permitted
+  - Reading and reviewing the code and documents.
+  - Quoting them for evaluation purposes within a hiring process.
+
+Not permitted without prior written permission
+  - Copying, redistribution, or republication.
+  - Creating derivative works or adaptations.
+  - Any use of the code, commercial or non-commercial.
+  - Use as training data for machine learning models.
+
+Third-party components (Unity 6, Firebase Functions v2, Odin Inspector,
+SimpleJSON, Newtonsoft.Json, UniTask, and others) remain subject to their
+own licenses and are not covered by this notice.

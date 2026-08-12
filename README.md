@@ -135,3 +135,4 @@ README 카드의 **근거** 항목에 실제 산출물 경로가 적혀 있습�
 - 로컬 절대경로(`E:\Work\...`)는 `<project-root>`로 치환했습니다. 그 외 코드는 원본 그대로입니다.
 - 서드파티 의존: Unity 6, Firebase Functions v2, Odin Inspector(에디터 툴), SimpleJSON, Newtonsoft.Json, UniTask
 - 자격증명·서비스 계정 키·프로젝트 설정 파일은 포함하지 않았습니다.
+- **저작권**: 상용 프로젝트에서 발췌한 코드라 **열람용**으로만 공개합니다. 복제·배포·2차적 저작물 작성은 허용하지 않습니다. → [LICENSE](LICENSE)
