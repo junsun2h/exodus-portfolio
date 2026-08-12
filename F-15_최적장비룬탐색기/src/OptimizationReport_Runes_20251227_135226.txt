@@ -1,0 +1,137 @@
+﻿====================================
+📊 최적화 상세 리포트
+====================================
+생성 일시: 2025-12-27 13:52:26
+프리셋: preset_poison_poisoning
+빌드 타입: Ailment 빌드 (상태이상 피해 우선)
+
+이전 DPS: 126014072484
+최종 DPS: 470503728362
+증가량: 344489655878 (+273.4%)
+소요 시간: 61.2초
+테스트 조합: 24개
+====================================
+
+🔮 룬 테스트 결과:
+------------------------------------
+
+총 24개 룬 테스트
+  • skillrune_crit_chance
+    DPS: 150273559806 | 증가량: +24259487322 (+19.3%)
+    [RuneModValues]
+      - mod_crit_chance_inc: 0.12 | 기여: +22393372912 (+17.8%)
+      - mod_crit_chance: 0.01 | 기여: +1866114409 (+1.5%)
+  • skillrune_rapid_decay
+    DPS: 149014571148 | 증가량: +23000498664 (+18.3%)
+    [RuneModValues]
+      - mod_all_duration_inc: -0.10 | 기여: +11500249332 (+9.1%)
+      - mod_all_ailment_damage_more: 0.10 | 기여: +11500249332 (+9.1%)
+  • skillrune_chance_poisoning
+    DPS: 145106537304 | 증가량: +19092464819 (+15.2%)
+    [RuneModValues]
+      - mod_chance_to_poisoning: 0.04 | 기여: +6364154940 (+5.1%)
+      - mod_poison_damage_inc: 0.08 | 기여: +12728309879 (+10.1%)
+  • skillrune_poisoning_damage
+    DPS: 143245045014 | 증가량: +17230972529 (+13.7%)
+    [RuneModValues]
+      - mod_poisoning_damage_inc: 0.08 | 기여: +8615486265 (+6.8%)
+      - mod_poisoning_damage_more: 0.08 | 기여: +8615486265 (+6.8%)
+  • skillrune_crit_multiplier
+    DPS: 141670397047 | 증가량: +15656324563 (+12.4%)
+    [RuneModValues]
+      - mod_crit_multiplier_inc: 0.24 | 기여: +15656324563 (+12.4%)
+  • skillrune_strong_ailment
+    DPS: 140181710997 | 증가량: +14167638513 (+11.2%)
+    [RuneModValues]
+      - mod_all_ailment_damage_inc: 0.06 | 기여: +7083819256 (+5.6%)
+      - mod_all_ailment_damage_more: 0.06 | 기여: +7083819256 (+5.6%)
+  • skillrune_cast_speed
+    DPS: 136676555309 | 증가량: +10662482824 (+8.5%)
+    [RuneModValues]
+      - mod_castspeed_inc: 0.14 | 기여: +10662482824 (+8.5%)
+  • skillrune_aoe_red
+    DPS: 127227843998 | 증가량: +1213771514 (+1.0%)
+    [RuneModValues]
+      - mod_skill_aoe_radius_inc: -0.50 | 기여: +606885757 (+0.5%)
+      - mod_all_skill_damage_inc: 0.16 | 기여: +606885757 (+0.5%)
+  • skillrune_poison_damage
+    DPS: 126924401120 | 증가량: +910328635 (+0.7%)
+    [RuneModValues]
+      - mod_poison_damage_inc: 0.12 | 기여: +910328635 (+0.7%)
+  • skillrune_elemental_focus
+    DPS: 126772679681 | 증가량: +758607196 (+0.6%)
+    [RuneModValues]
+      - mod_elemental_damage_inc: 0.10 | 기여: +68964291 (+0.1%)
+      - mod_cannot_cause_ailment: 1.00 | 기여: +689642906 (+0.5%)
+  • skillrune_decay
+    DPS: 126546448303 | 증가량: +532375818 (+0.4%)
+    [RuneModValues]
+      - mod_all_duration_inc: 0.10 | 기여: +266187909 (+0.2%)
+      - mod_all_ailment_damage_inc: 0.10 | 기여: +266187909 (+0.2%)
+  • skillrune_execute
+    DPS: 126469236802 | 증가량: +455164318 (+0.4%)
+    [RuneModValues]
+      - mod_instantkill_lowerlife: 0.04 | 기여: +182065727 (+0.1%)
+      - mod_all_skill_damage_inc: 0.06 | 기여: +273098591 (+0.2%)
+  • skillrune_life_leech
+    DPS: 126469236802 | 증가량: +455164318 (+0.4%)
+    [RuneModValues]
+      - mod_life_leech_all_damage: 0.00 | 기여: +14682720 (+0.0%)
+      - mod_all_skill_damage_inc: 0.06 | 기여: +440481598 (+0.3%)
+  • skillrune_mana_leech
+    DPS: 126469236802 | 증가량: +455164318 (+0.4%)
+    [RuneModValues]
+      - mod_mana_leech_all_damage: 0.00 | 기여: +21674492 (+0.0%)
+      - mod_all_skill_damage_inc: 0.06 | 기여: +433489826 (+0.3%)
+  • skillrune_poison_penetration
+    DPS: 126226482499 | 증가량: +212410015 (+0.2%)
+    [RuneModValues]
+      - mod_poison_resistance_penetration: 0.08 | 기여: +154480011 (+0.1%)
+      - mod_poison_damage_inc: 0.03 | 기여: +57930004 (+0.0%)
+  • skillrune_aoe_inc
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_skill_aoe_radius_inc: 0.20 | 기여: +0 (+0.0%)
+  • skillrune_chance_stun
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_chance_to_stun: 0.02 | 기여: +0 (+0.0%)
+      - mod_stun_duration_inc_on_enemy: 0.08 | 기여: +0 (+0.0%)
+  • skillrune_damage_on_fulllife
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_damage_inc_on_full_life: 0.08 | 기여: +0 (+0.0%)
+  • skillrune_projectile_add_fire
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_projectile_additional_fire: 2.00 | 기여: +0 (+0.0%)
+      - mod_projectile_damage_inc: -0.40 | 기여: +0 (+0.0%)
+  • skillrune_projectile_chain
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_projectile_chain_additional_target: 1.00 | 기여: +0 (+0.0%)
+      - mod_projectile_damage_inc: -0.20 | 기여: +0 (+0.0%)
+  • skillrune_projectile_pierce
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_projectile_pierce_additional_target: 1.00 | 기여: +0 (+0.0%)
+      - mod_projectile_damage_inc: -0.30 | 기여: +0 (+0.0%)
+  • skillrune_projectile_speed_inc
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_projectile_speed_inc: 0.30 | 기여: +0 (+0.0%)
+      - mod_projectile_damage_inc: 0.04 | 기여: +0 (+0.0%)
+  • skillrune_projectile_speed_red
+    DPS: 126014072484 | 증가량: +0 (+0.0%)
+    [RuneModValues]
+      - mod_projectile_speed_inc: -0.16 | 기여: +0 (+0.0%)
+      - mod_projectile_damage_inc: 0.14 | 기여: +0 (+0.0%)
+  • skillrune_crit_contolled
+    DPS: 110578418076 | 증가량: -15435654408 (-12.2%)
+    [RuneModValues]
+      - mod_crit_chance_inc: -0.24 | 기여: -7717827204 (-6.1%)
+      - mod_all_skill_damage_inc: 0.16 | 기여: -7717827204 (-6.1%)
+
+====================================
+
+✅ 리포트 저장 완료

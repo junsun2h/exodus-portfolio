@@ -1,0 +1,43 @@
+{
+  "date": "2026-04-12",
+  "timestamp": "2026-04-12T06:20:58.278Z",
+  "status": "ROLLBACK",
+  "steps": [
+    {
+      "name": "eslint --fix",
+      "status": "success",
+      "durationMs": 21111,
+      "details": "34 파일 수정"
+    },
+    {
+      "name": "codemod: console-to-logdebug",
+      "status": "success",
+      "durationMs": 37,
+      "details": "0 파일 / 0 교체"
+    },
+    {
+      "name": "build gate",
+      "status": "success",
+      "durationMs": 15478,
+      "details": "빌드 성공"
+    },
+    {
+      "name": "test gate",
+      "status": "success",
+      "durationMs": 632040,
+      "details": "1645 passing"
+    },
+    {
+      "name": "git commit",
+      "status": "failed",
+      "durationMs": 2127,
+      "details": "git commit 실패"
+    }
+  ],
+  "stats": {
+    "eslintFixedFiles": 34,
+    "codemodFiles": 0,
+    "codemodReplacements": 0
+  },
+  "reason": "커밋 단계 실패"
+}

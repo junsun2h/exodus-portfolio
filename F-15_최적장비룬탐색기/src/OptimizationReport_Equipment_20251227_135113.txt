@@ -1,0 +1,1024 @@
+﻿====================================
+📊 최적화 상세 리포트
+====================================
+생성 일시: 2025-12-27 13:51:13
+프리셋: preset_poison_poisoning
+빌드 타입: Ailment 빌드 (상태이상 피해 우선)
+
+이전 DPS: 12196376
+최종 DPS: 223650195611
+증가량: 223637999235 (+1833643.0%)
+소요 시간: 145.2초
+테스트 조합: 120개
+====================================
+
+📌 최적화 방식 안내
+------------------------------------
+■ 장비 최적화 순서:
+  1. weapon → 2. helmet → 3. bodyArmor → 4. gloves
+  5. boots → 6. amulet → 7. belt → 8. ring1
+
+■ 빌드 타입별 최적화 기준 (DPS 분리 방식):
+  [Ailment 빌드] Ailment + Aura + Dot DPS (Spell 제외)
+  → Spell DPS는 점수 계산에서 완전히 배제됩니다
+  → 상태이상 피해와 공통 DPS(Aura/Dot)만으로 평가합니다
+
+■ DPS 구성 요소:
+  - Spell: 스킬 명중 피해 (Hit 빌드 전용)
+  - Ailment: 상태이상 피해 (Ailment 빌드 전용)
+  - Aura: 오라 지속 피해 (공통)
+  - Dot: 도트 버프 피해 (공통)
+
+■ DPS 증가량 측정 방식:
+  - 각 슬롯은 순차적으로 최적화되므로, 뒤쪽 슬롯일수록
+    이전 슬롯들의 최적화 효과가 누적 반영됩니다
+------------------------------------
+
+📋 최적 장비 요약 (슬롯별 최고 효율):
+------------------------------------
+  weapon: weapon_dagger_shadowbite (+6.2%)
+  helmet: armour_helmet_helmet_of_the_skybreaker (+3.5%)
+  bodyArmor: armour_bodyarmour_raiments_of_the_corrupted [현재 장착] (-16.7%)
+  gloves: armour_glove_helix_breaker_gloves (+8.3%)
+  boots: armour_boots_imbued_tempest_boots (+9.5%)
+  amulet: accessory_amulet_unstoppable_taint [현재 장착] (-33.8%)
+  belt: accessory_belt_belt_of_the_nightmare (+5.2%)
+  ring1: accessory_ring_infinite_loop (+14.2%)
+------------------------------------
+
+⚔️ 장비 테스트 결과 (슬롯별 상세):
+------------------------------------
+
+[weapon] - 44개 테스트
+  • weapon_dagger_shadowbite
+    DPS: 29764163185
+    증가량: +6.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_bleeding: 0.25 | 기여: +161957086 (+0.6%)
+      - mod_physical_damage_inc: 0.40 | 기여: +259131337 (+0.9%)
+      - mod_crit_chance_inc: 0.50 | 기여: +323914172 (+1.1%)
+      - mod_castspeed_inc: -0.20 | 기여: -129565669 (-0.4%)
+      - mod_chance_to_poisoning: 0.25 | 기여: +161957086 (+0.6%)
+  • weapon_staff_the_black_stalk
+    DPS: 24879058265
+    증가량: -17.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.40 | 기여: -2053855454 (-7.1%)
+      - mod_chance_to_poisoning: 0.20 | 기여: -1026927727 (-3.5%)
+      - mod_poisoning_duration_inc_on_enemy: 0.20 | 기여: -1026927727 (-3.5%)
+  • weapon_dagger_hellfire_mindblade
+    DPS: 20074865291
+    증가량: -25.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_ignite: 0.25 | 기여: -2345237864 (-8.1%)
+      - mod_ignite_damage_inc: 0.40 | 기여: -3752380582 (-12.9%)
+      - mod_ignite_duration_inc_on_enemy: 0.30 | 기여: -2814285436 (-9.7%)
+  • weapon_staff_archmages_legacy
+    DPS: 21823581229
+    증가량: -25.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_elemental_damage_inc: 0.30 | 기여: -3069937690 (-10.6%)
+      - mod_elemental_resistance: 0.25 | 기여: -2558281408 (-8.8%)
+      - mod_elemental_resistance_penetration: 0.15 | 기여: -1534968845 (-5.3%)
+  • weapon_staff_staff_of_the_penitent
+    DPS: 24969117540
+    증가량: -31.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_crit_chance_inc: 0.40 | 기여: -274711223 (-0.9%)
+      - mod_cold_damage_inc: 0.25 | 기여: -171694514 (-0.6%)
+      - mod_use_cold_skill_reinforce_add: 5.00 | 기여: -3433890284 (-11.8%)
+      - mod_castspeed_inc: 0.20 | 기여: -137355611 (-0.5%)
+  • weapon_axe_deathbringer
+    DPS: 23446416868
+    증가량: -33.3% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_damage_inc: 0.50 | 기여: -2770176152 (-9.6%)
+      - mod_instantkill_lowerlife: 0.10 | 기여: -554035230 (-1.9%)
+      - mod_crit_chance_inc: 0.40 | 기여: -2216140922 (-7.6%)
+  • weapon_staff_apostle_of_argus
+    DPS: 34104044457
+    증가량: -34.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_lightning_damage_inc: 0.40 | 기여: +1411662147 (+4.9%)
+      - mod_crit_chance_inc: 0.75 | 기여: +2646866526 (+9.1%)
+      - mod_castspeed_inc: 0.20 | 기여: +705831074 (+2.4%)
+      - mod_movementspeed_inc: 0.10 | 기여: +352915537 (+1.2%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_gain_when_enemy_crit_mod_buff_killingspree_chance_to_gain: 1.00 | 기여: +5117275284 (+17.7%)
+  • weapon_dagger_umbral_shiv
+    DPS: 20074865291
+    증가량: -40.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_paralyze: 0.20 | 기여: -2970634627 (-10.2%)
+      - mod_lightning_damage_inc: 0.40 | 기여: -5941269255 (-20.5%)
+  • weapon_dagger_stormtip
+    DPS: 21399050205
+    증가량: -40.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_lightning_damage_inc_per_lightning_resistance: 0.05 | 기여: -1517543793 (-5.2%)
+      - mod_castspeed_inc: 0.20 | 기여: -6070175174 (-20.9%)
+  • weapon_sword_malice
+    DPS: 22648438916
+    증가량: -41.9% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_crit_chance_inc: 0.25 | 기여: -3169165128 (-10.9%)
+      - mod_buff_killingspree_max: -1.00 | 기여: -3169165128 (-10.9%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_no_mod_crit_multiplier_inc: 0.50 | 기여: -2881059208 (-9.9%)
+      - combinemod_buff_killingspree_charge_no_mod_all_skill_damage_inc: 0.60 | 기여: -3457271049 (-11.9%)
+  • weapon_axe_demonfork
+    DPS: 21378926428
+    증가량: -42.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.25 | 기여: -336630210 (-1.2%)
+      - mod_use_poison_skill_reinforce_add: 5.00 | 기여: -6732604199 (-23.2%)
+      - mod_poisoning_damage_inc: 0.40 | 기여: -538608336 (-1.9%)
+    [CombineModValueList]
+      - combinemod_buff_backstab_charge_per_mod_castspeed_inc: 0.02 | 기여: -7607842744 (-26.2%)
+  • weapon_sword_manifestation_of_fear
+    DPS: 18658383960
+    증가량: -44.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.60 | 기여: -11267329323 (-38.9%)
+      - mod_castspeed_inc: -0.30 | 기여: +5633664662 (+19.4%)
+      - mod_cursed_enemy_chance_to_poisoning: 0.25 | 기여: -4694720551 (-16.2%)
+  • weapon_dagger_frost_needle
+    DPS: 20682598303
+    증가량: -44.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cold_damage_inc: 0.30 | 기여: -889732593 (-3.1%)
+      - mod_crit_multiplier_inc: 0.20 | 기여: -593155062 (-2.0%)
+      - mod_projectile_additional_fire: 2.00 | 기여: -5931550621 (-20.5%)
+      - mod_projectile_speed_inc: 0.30 | 기여: -889732593 (-3.1%)
+  • weapon_sword_born_terrorblade
+    DPS: 20431833494
+    증가량: -47.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cold_damage_inc: 0.30 | 기여: -2231722351 (-7.7%)
+      - mod_arctic_damage_inc: 0.25 | 기여: -1859768626 (-6.4%)
+      - mod_chance_to_double_damage: 0.10 | 기여: -743907450 (-2.6%)
+      - mod_cold_resistance: 0.50 | 기여: -3719537252 (-12.8%)
+  • weapon_sword_red_sword_of_courage
+    DPS: 21123960914
+    증가량: -48.6% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.40 | 기여: -4032209364 (-13.9%)
+      - mod_skill_aoe_radius_inc: 0.20 | 기여: -2016104682 (-7.0%)
+      - mod_castspeed_inc: 0.10 | 기여: -1008052341 (-3.5%)
+      - mod_life_inc: 0.08 | 기여: -806441873 (-2.8%)
+  • weapon_dagger_demonhorn_spike
+    DPS: 26512423549
+    증가량: -48.9% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_damage_inc: 0.35 | 기여: -753061712 (-2.6%)
+      - mod_castspeed_inc: 0.30 | 기여: -645481467 (-2.2%)
+      - mod_projectile_speed_inc: 0.50 | 기여: -1075802445 (-3.7%)
+      - mod_mana_leech_physical_damage: 0.00 | 기여: +0 (+0.0%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_gain_when_enemy_kill_mod_buff_killingspree_chance_to_gain: 0.30 | 기여: -2474345624 (-8.5%)
+  • weapon_sword_tempest_of_chaos
+    DPS: 20572333784
+    증가량: -49.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_arctic: 0.15 | 기여: -1328595061 (-4.6%)
+      - mod_cold_damage_inc: 0.25 | 기여: -2214325102 (-7.6%)
+      - mod_inc_damage_arctic: 0.30 | 기여: -2657190123 (-9.2%)
+      - mod_all_skill_damage_inc: 0.25 | 기여: -2214325102 (-7.6%)
+  • weapon_sword_thunderfury
+    DPS: 20431833494
+    증가량: -49.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_lightning_damage_inc: 0.40 | 기여: -1267397878 (-4.4%)
+      - mod_skill_additional_chain: 1.00 | 기여: -3168494696 (-10.9%)
+      - mod_skill_additional_chain_speed_inc: 0.30 | 기여: -950548409 (-3.3%)
+      - mod_mana_nocost_skill_lightning: 1.00 | 기여: -3168494696 (-10.9%)
+  • weapon_sword_stormcaller
+    DPS: 20600433843
+    증가량: -49.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_lightning_damage_inc: 0.25 | 기여: -3811970605 (-13.2%)
+      - mod_all_skill_damage_inc: 0.30 | 기여: -4574364726 (-15.8%)
+    [CombineModValueList]
+      - combinemod_buff_backstab_charge_per_mod_crit_chance: 0.01 | 기여: -762394121 (-2.6%)
+      - combinemod_buff_backstab_charge_per_mod_crit_multiplier_inc: 0.10 | 기여: -7623941209 (-26.3%)
+  • weapon_sword_infernal_sword
+    DPS: 24690528316
+    증가량: -49.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.40 | 기여: -2454994775 (-8.5%)
+      - mod_instantkill_lowerlife: 0.10 | 기여: -613748694 (-2.1%)
+      - mod_chance_to_ignite: 0.20 | 기여: -1227497388 (-4.2%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_gain_when_enemy_ignite_mod_buff_killingspree_chance_to_gain: 1.00 | 기여: -4296240857 (-14.8%)
+  • weapon_sword_haruspexs_deathblade
+    DPS: 20431833494
+    증가량: -49.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_bleeding: 0.25 | 기여: -3055334171 (-10.5%)
+      - mod_physical_damage_inc: 0.25 | 기여: -3055334171 (-10.5%)
+      - mod_bleeding_damage_more: 0.20 | 기여: -2444267337 (-8.4%)
+  • weapon_sword_slayer_of_the_lifeless
+    DPS: 20431833494
+    증가량: -49.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_damage_inc: 0.40 | 기여: -622177140 (-2.1%)
+      - mod_instantkill_lowerlife: 0.10 | 기여: -155544285 (-0.5%)
+      - mod_use_physical_skill_reinforce_add: 5.00 | 기여: -7777214254 (-26.8%)
+  • weapon_axe_spirit_crusher
+    DPS: 8196171563
+    증가량: -49.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_damage_inc: 0.50 | 기여: -5197649402 (-17.9%)
+      - mod_cannot_crit: 1.00 | 기여: -10395298805 (-35.9%)
+      - mod_stun_duration_inc_on_enemy: 0.50 | 기여: -5197649402 (-17.9%)
+  • weapon_dagger_heartrazor
+    DPS: 31002906959
+    증가량: -50.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_mana_regen_rate_inc: 0.30 | 기여: +366570507 (+1.3%)
+      - mod_lightning_damage_inc: 0.35 | 기여: +427665591 (+1.5%)
+      - mod_buff_backstab_max: 1.00 | 기여: +1221901689 (+4.2%)
+    [CombineModValueList]
+      - combinemod_buff_backstab_charge_gain_when_enemy_kill_mod_buff_backstab_chance_to_gain: 0.30 | 기여: +2016137786 (+7.0%)
+  • weapon_axe_gatecrasher
+    DPS: 19899848192
+    증가량: -50.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_ignorepain_duration_inc: 0.20 | 기여: -1817384196 (-6.3%)
+      - mod_physical_damage_inc: 0.40 | 기여: -3634768392 (-12.5%)
+      - mod_cold_resistance: 0.40 | 기여: -3634768392 (-12.5%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_per_mod_physical_resistance: 0.08 | 기여: -4038631547 (-13.9%)
+      - combinemod_buff_ignorepain_charge_per_mod_physical_damage_inc: 0.10 | 기여: -5048289434 (-17.4%)
+  • weapon_axe_windslicer
+    DPS: 21712500038
+    증가량: -50.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_crit_chance_arctic: 0.60 | 기여: -3357354985 (-11.6%)
+      - mod_cold_damage_inc: 0.30 | 기여: -1678677493 (-5.8%)
+      - mod_crit_multiplier_inc: 0.25 | 기여: -1398897911 (-4.8%)
+      - mod_castspeed_inc: 0.15 | 기여: -839338746 (-2.9%)
+  • weapon_axe_volcanospike
+    DPS: 20911007856
+    증가량: -50.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.25 | 기여: -360525059 (-1.2%)
+      - mod_use_fire_skill_reinforce_add: 5.00 | 기여: -7210501176 (-24.9%)
+      - mod_castspeed_inc: 0.15 | 기여: -216315035 (-0.7%)
+      - mod_fire_resistance_penetration: 0.20 | 기여: -288420047 (-1.0%)
+  • weapon_axe_revenant_fury
+    DPS: 22404563139
+    증가량: -50.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_frenzy_chance_to_gain: 1.00 | 기여: -3761260591 (-13.0%)
+      - mod_all_skill_damage_inc: 0.40 | 기여: -1504504236 (-5.2%)
+      - mod_castspeed_inc: 0.30 | 기여: -1128378177 (-3.9%)
+      - mod_movementspeed_inc: 0.05 | 기여: -188063030 (-0.6%)
+  • weapon_axe_lunar_crescent
+    DPS: 19899848192
+    증가량: -50.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cold_damage_inc: 0.40 | 기여: -4543460490 (-15.7%)
+      - mod_cold_resistance_penetration: 0.20 | 기여: -2271730245 (-7.8%)
+      - mod_chance_to_chill: 0.20 | 기여: -2271730245 (-7.8%)
+  • weapon_axe_legacy_of_thunder
+    DPS: 19899848192
+    증가량: -50.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_damage_shock: 0.20 | 기여: -1817384196 (-6.3%)
+      - mod_lightning_damage_inc: 0.40 | 기여: -3634768392 (-12.5%)
+      - mod_chance_to_shock: 0.20 | 기여: -1817384196 (-6.3%)
+      - mod_shock_damage_inc: 0.20 | 기여: -1817384196 (-6.3%)
+  • weapon_staff_dragons_touch
+    DPS: 19810028308
+    증가량: -51.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.35 | 기여: -1126968176 (-3.9%)
+      - mod_skill_aoe_radius: 2.00 | 기여: -6439818151 (-22.2%)
+      - mod_skill_aoe_radius_inc: 0.50 | 기여: -1609954538 (-5.6%)
+  • weapon_staff_touch_of_the_celestial_spark
+    DPS: 19810028308
+    증가량: -51.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_ignite: 0.20 | 기여: -3058913622 (-10.6%)
+      - mod_ignite_damage_inc: 0.30 | 기여: -4588370433 (-15.8%)
+      - mod_ignite_damage_more: 0.10 | 기여: -1529456811 (-5.3%)
+  • weapon_staff_daybreak_staff
+    DPS: 20472120765
+    증가량: -51.3% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_arctic: 0.10 | 기여: -1064331051 (-3.7%)
+      - mod_cold_damage_inc: 0.25 | 기여: -2660827627 (-9.2%)
+      - mod_castspeed_inc: 0.10 | 기여: -1064331051 (-3.7%)
+      - mod_arctic_damage_inc: 0.35 | 기여: -3725158678 (-12.9%)
+  • weapon_axe_crimson_crescent
+    DPS: 28333454252
+    증가량: -51.3% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_arctic: 0.10 | 기여: -72590547 (-0.3%)
+      - mod_crit_chance_inc: 0.40 | 기여: -290362187 (-1.0%)
+      - mod_cold_damage_inc: 0.40 | 기여: -290362187 (-1.0%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_gain_in_arctic_when_enemy_kill_mod_buff_killingspree_chance_to_gain: 0.20 | 기여: -653314921 (-2.3%)
+  • weapon_staff_shaft_of_glacial_ice
+    DPS: 29498003193
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_all_skill_damage_inc: 0.25 | 기여: +319521262 (+1.1%)
+      - mod_castspeed_inc: 0.15 | 기여: +191712757 (+0.7%)
+    [CombineModValueList]
+      - combinemod_buff_backstab_charge_gain_in_arctic_when_enemy_kill_mod_buff_backstab_chance_to_gain: 0.20 | 기여: +255617010 (+0.9%)
+      - combinemod_buff_backstab_charge_per_mod_cold_damage_inc: 0.20 | 기여: +255617010 (+0.9%)
+  • weapon_staff_greatestaff_of_the_devourer
+    DPS: 19810028308
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_damage_inc: 0.50 | 기여: -8267334113 (-28.5%)
+      - mod_life_leech_physical_damage: 0.01 | 기여: -82673341 (-0.3%)
+      - mod_chance_to_stun: 0.05 | 기여: -826733411 (-2.9%)
+  • weapon_staff_doomfinger
+    DPS: 20697364489
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_movementspeed_inc_on_full_life: 0.10 | 기여: -1184200669 (-4.1%)
+      - mod_instantkill_lowerlife: 0.10 | 기여: -1184200669 (-4.1%)
+      - mod_poison_damage_inc: 0.40 | 기여: -4736802676 (-16.3%)
+      - mod_castspeed_inc: 0.10 | 기여: -1184200669 (-4.1%)
+  • weapon_staff_distant_land
+    DPS: 20803166994
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_bleeding: 0.20 | 기여: -277410243 (-1.0%)
+      - mod_physical_damage_inc: 0.25 | 기여: -346762804 (-1.2%)
+      - mod_use_physical_skill_reinforce_add: 5.00 | 기여: -6935256084 (-23.9%)
+      - mod_skill_aoe_radius_inc: 0.30 | 기여: -416115365 (-1.4%)
+      - mod_castspeed_inc: 0.15 | 기여: -208057683 (-0.7%)
+  • weapon_dagger_the_night_blade
+    DPS: 24831444238
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_crit_chance_inc: 0.50 | 기여: -742022310 (-2.6%)
+      - mod_all_skill_damage_inc: 0.30 | 기여: -445213386 (-1.5%)
+      - mod_projectile_pierce_all: 1.00 | 기여: -1484044620 (-5.1%)
+      - mod_cannotbe_lifeleeched: 1.00 | 기여: -1484044620 (-5.1%)
+  • weapon_dagger_shadow_screamer [현재 장착]
+    DPS: 28986769173
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.25 | 기여: +0 (+0.0%)
+      - mod_use_poison_skill_reinforce_add: 5.00 | 기여: +0 (+0.0%)
+      - mod_chance_to_poisoning: 0.30 | 기여: +0 (+0.0%)
+  • weapon_dagger_netherbane
+    DPS: 20834531556
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.30 | 기여: -3762571208 (-13.0%)
+      - mod_crit_multiplier_inc: 0.25 | 기여: -3135476007 (-10.8%)
+      - mod_chance_to_double_damage: 0.10 | 기여: -1254190403 (-4.3%)
+  • weapon_sword_balde_of_tyrants
+    DPS: 21229239025
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.40 | 기여: -1149263726 (-4.0%)
+      - mod_crit_multiplier_inc: 0.25 | 기여: -718289828 (-2.5%)
+      - mod_skill_aoe_radius: 2.00 | 기여: -5746318628 (-19.8%)
+      - mod_movementspeed_inc: 0.05 | 기여: -143657966 (-0.5%)
+  • weapon_dagger_vileblade_of_the_betrayer
+    DPS: 28713784642
+    증가량: -51.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_crit_chance_inc: 0.80 | 기여: -189902283 (-0.7%)
+      - mod_castspeed_inc: 0.15 | 기여: -35606678 (-0.1%)
+      - mod_chance_to_bleeding: 0.20 | 기여: -47475571 (-0.2%)
+  • weapon_axe_storm_toothed_kasuyu
+    DPS: 19899848192
+    증가량: -79.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_lightning_damage_inc: 0.25 | 기여: -395083521 (-1.4%)
+      - mod_use_lightning_skill_reinforce_add: 5.00 | 기여: -7901670418 (-27.3%)
+      - mod_shock_duration_inc_on_enemy: 0.30 | 기여: -474100225 (-1.6%)
+      - mod_lightning_resistance_penetration: 0.20 | 기여: -316066817 (-1.1%)
+
+[helmet] - 11개 테스트
+  • armour_helmet_helmet_of_the_skybreaker
+    DPS: 34697535130
+    증가량: +3.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_all_skill_damage_inc: 0.10 | 기여: +976940224 (+3.0%)
+      - mod_skill_aoe_radius_inc: 0.10 | 기여: +976940224 (+3.0%)
+  • armour_helmet_snowserpent_mail_helm
+    DPS: 34697535130
+    증가량: +3.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.10 | 기여: +300596992 (+0.9%)
+      - mod_poisoning_duration_inc_on_enemy: 0.25 | 기여: +751492480 (+2.3%)
+      - mod_poison_resistance: 0.30 | 기여: +901790976 (+2.8%)
+  • armour_helmet_astral_crown
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_surgeofpower_effect: 0.30 | 기여: +1861363332 (+5.7%)
+    [CombineModValueList]
+      - combinemod_buff_surgeofpower_charge_per_mod_mana_leech_all_damage: 0.01 | 기여: +930681666 (+2.8%)
+      - combinemod_buff_surgeofpower_charge_per_mod_life_leech_all_damage: 0.01 | 기여: +930681666 (+2.8%)
+  • armour_helmet_crown_of_burning_resolve
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_elemental_resistance: 0.35 | 기여: +407173229 (+1.2%)
+      - mod_immune_stun: 1.00 | 기여: +1163352082 (+3.6%)
+      - mod_life_leech_all_damage: 0.00 | 기여: +0 (+0.0%)
+      - mod_physical_resistance: 0.25 | 기여: +290838021 (+0.9%)
+  • armour_helmet_dark_iron_helm
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_evade_chance_inc: 0.10 | 기여: +103409074 (+0.3%)
+      - mod_buff_killingspree_max: 1.00 | 기여: +1034090740 (+3.2%)
+      - mod_elemental_resistance: 0.20 | 기여: +206818148 (+0.6%)
+      - mod_physical_resistance: 0.50 | 기여: +517045370 (+1.6%)
+  • armour_helmet_firelords_hood
+    DPS: 37006428036
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.15 | 기여: +608967622 (+1.9%)
+      - mod_elemental_resistance: -0.15 | 기여: -608967622 (-1.9%)
+      - mod_elemental_resistance_penetration: 0.15 | 기여: +608967622 (+1.9%)
+      - mod_fire_resistance: 0.90 | 기여: +3653805733 (+11.2%)
+  • armour_helmet_helm_of_the_night_watchman
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_damage_chill: 0.30 | 기여: +413636296 (+1.3%)
+      - mod_lightning_resistance: 0.25 | 기여: +344696913 (+1.1%)
+      - mod_arctic_damage_inc: 0.30 | 기여: +413636296 (+1.3%)
+      - mod_cold_resistance: 0.25 | 기여: +344696913 (+1.1%)
+      - mod_chill_duration_inc_on_enemy: 0.25 | 기여: +344696913 (+1.1%)
+  • armour_helmet_helmet_of_guiding_light
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_resistance: 0.50 | 기여: +1551136110 (+4.7%)
+      - mod_life_inc: 0.10 | 기여: +310227222 (+0.9%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_max_mod_physical_damage_reduction: 0.10 | 기여: +1240908888 (+3.8%)
+      - combinemod_buff_ignorepain_charge_max_mod_elemental_resistance: 0.05 | 기여: +620454444 (+1.9%)
+  • armour_helmet_judgment_hood
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_life_inc: 0.10 | 기여: +286363589 (+0.9%)
+      - mod_block_chance: 0.05 | 기여: +143181795 (+0.4%)
+      - mod_movementspeed_inc: 0.05 | 기여: +143181795 (+0.4%)
+      - mod_physical_resistance: 0.45 | 기여: +1288636153 (+3.9%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_gain_when_me_block_mod_buff_ignorepain_chance_to_gain: 0.20 | 기여: +1861363332 (+5.7%)
+  • armour_helmet_strom_masters_helmet
+    DPS: 34605018013
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_crit_chance_shock: 0.30 | 기여: +372272666 (+1.1%)
+      - mod_chance_to_shock: 0.20 | 기여: +248181778 (+0.8%)
+      - mod_immune_shock: 1.00 | 기여: +1240908888 (+3.8%)
+  • armour_helmet_timewardens_helm [현재 장착]
+    DPS: 32743654682
+    증가량: +3.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_mana_inc: 0.05 | 기여: +0 (+0.0%)
+      - mod_all_skill_damage_inc: 0.25 | 기여: +0 (+0.0%)
+      - mod_castspeed_inc: -0.15 | 기여: +0 (+0.0%)
+
+[bodyArmor] - 11개 테스트
+  • armour_bodyarmour_deathgods_breastplate
+    DPS: 34744914837
+    증가량: -16.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_damage_poisoning: 0.40 | 기여: -1694293908 (-4.0%)
+      - mod_poisoning_duration_inc_on_enemy: 0.20 | 기여: -847146954 (-2.0%)
+      - mod_immune_poisoning: 1.00 | 기여: -4235734770 (-9.9%)
+      - mod_poisoning_damage_inc: 0.25 | 기여: -1058933693 (-2.5%)
+    [CombineModValueList]
+      - combinemod_in_poisoning_when_enemy_kill_mod_enemy_when_kill_explode_deal_life_as_poison: 0.20 | 기여: -7836109325 (-18.4%)
+  • armour_bodyarmour_cuirass_of_celestial_harmony
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_damage_shock: 0.40 | 기여: -1911148856 (-4.5%)
+      - mod_shock_damage_inc: 0.25 | 기여: -1194468035 (-2.8%)
+      - mod_immune_shock: 1.00 | 기여: -4777872141 (-11.2%)
+    [CombineModValueList]
+      - combinemod_in_shock_when_enemy_kill_mod_enemy_when_kill_explode_deal_life_as_lightning: 0.20 | 기여: -7883489032 (-18.5%)
+  • armour_bodyarmour_diabolic_robe
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cursed_enemy_crit_chance_inc: 0.20 | 기여: -2425688933 (-5.7%)
+      - mod_evade_chance_inc: 0.25 | 기여: -3032111166 (-7.1%)
+      - mod_elemental_resistance: 0.20 | 기여: -2425688933 (-5.7%)
+  • armour_bodyarmour_frost_wyrm_ribcage
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_immune_chill: 1.00 | 기여: -3032111166 (-7.1%)
+      - mod_arctic_duration_inc_on_enemy: 0.20 | 기여: -606422233 (-1.4%)
+      - mod_inc_damage_arctic: 0.40 | 기여: -1212844466 (-2.8%)
+      - mod_immune_arctic: 1.00 | 기여: -3032111166 (-7.1%)
+    [CombineModValueList]
+      - combinemod_in_arctic_when_enemy_kill_mod_enemy_when_kill_explode_deal_life_as_cold: 0.20 | 기여: -7883489032 (-18.5%)
+  • armour_bodyarmour_glory_of_the_defender
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_life_inc: 0.08 | 기여: -985436129 (-2.3%)
+      - mod_buff_ignorepain_duration_inc: 0.30 | 기여: -3695385484 (-8.7%)
+      - mod_mana_inc: 0.06 | 기여: -739077097 (-1.7%)
+      - mod_physical_resistance: 0.20 | 기여: -2463590322 (-5.8%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_gain_when_me_hit_mod_buff_ignorepain_chance_to_gain: 1.00 | 기여: -7883489032 (-18.5%)
+  • armour_bodyarmour_heartshatter_breastplate
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_skill_aoe_radius_inc: 0.50 | 기여: -4749089778 (-11.2%)
+      - mod_evade_chance_inc: 0.10 | 기여: -949817956 (-2.2%)
+      - mod_life_inc: 0.08 | 기여: -759854365 (-1.8%)
+      - mod_elemental_resistance: 0.15 | 기여: -1424726933 (-3.3%)
+  • armour_bodyarmour_icy_blood_chestplate
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_immune_bleeding: 1.00 | 기여: -4261345423 (-10.0%)
+      - mod_inc_damage_bleeding: 0.40 | 기여: -1704538169 (-4.0%)
+      - mod_bleeding_damage_inc: 0.25 | 기여: -1065336356 (-2.5%)
+      - mod_bleeding_duration_inc_on_enemy: 0.20 | 기여: -852269085 (-2.0%)
+    [CombineModValueList]
+      - combinemod_in_bleeding_when_enemy_kill_mod_enemy_when_kill_explode_deal_life_as_physical: 0.20 | 기여: -7883489032 (-18.5%)
+  • armour_bodyarmour_infernal_mantle
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_ignite_duration_inc_on_enemy: 0.20 | 기여: -852269085 (-2.0%)
+      - mod_inc_damage_ignite: 0.40 | 기여: -1704538169 (-4.0%)
+      - mod_ignite_damage_inc: 0.25 | 기여: -1065336356 (-2.5%)
+      - mod_immune_ignite: 1.00 | 기여: -4261345423 (-10.0%)
+    [CombineModValueList]
+      - combinemod_in_ignite_when_enemy_kill_mod_enemy_when_kill_explode_deal_life_as_fire: 0.20 | 기여: -7883489032 (-18.5%)
+  • armour_bodyarmour_plate_of_the_apocalypse
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_ignorepain_max: -2.00 | 기여: -2627829677 (-6.2%)
+      - mod_buff_killingspree_max: -2.00 | 기여: -2627829677 (-6.2%)
+      - mod_life_inc: 0.08 | 기여: -2627829677 (-6.2%)
+  • armour_bodyarmour_raiments_of_the_corrupted [현재 장착]
+    DPS: 42581024162
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.25 | 기여: +0 (+0.0%)
+      - mod_evade_chance_inc: 0.30 | 기여: +0 (+0.0%)
+      - mod_life_inc: 0.06 | 기여: +0 (+0.0%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_gain_in_poisoning_when_enemy_kill_mod_buff_killingspree_chance_to_gain: 0.20 | 기여: +0 (+0.0%)
+  • armour_bodyarmour_spiritwalkers_hauberk
+    DPS: 34697535130
+    증가량: -16.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_paralyze: 0.10 | 기여: -1292375251 (-3.0%)
+      - mod_movementspeed_inc: 0.05 | 기여: -646187626 (-1.5%)
+      - mod_paralyze_duration_inc_on_enemy: 0.20 | 기여: -2584750502 (-6.1%)
+      - mod_life_inc: 0.06 | 기여: -775425151 (-1.8%)
+      - mod_poison_resistance: 0.20 | 기여: -2584750502 (-6.1%)
+
+[gloves] - 11개 테스트
+  • armour_glove_helix_breaker_gloves
+    DPS: 65495625260
+    증가량: +8.3% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_crit_chance_inc: 0.25 | 기여: +3272913394 (+5.8%)
+      - mod_crit_multiplier_inc: 0.25 | 기여: +3272913394 (+5.8%)
+      - mod_castspeed_inc: 0.20 | 기여: +2618330715 (+4.6%)
+  • armour_glove_shadowseekers_glove
+    DPS: 59477700527
+    증가량: -2.7% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_projectile_chain_additional_target: 1.00 | 기여: +2247309121 (+4.0%)
+      - mod_castspeed_inc: 0.30 | 기여: +674192736 (+1.2%)
+      - mod_evade_chance_inc: 0.10 | 기여: +224730912 (+0.4%)
+  • armour_glove_unbroken_gladiators_gloves
+    DPS: 56597194722
+    증가량: -5.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_skill_aoe_radius_inc: 0.30 | 기여: +144941980 (+0.3%)
+      - mod_castspeed_inc: 0.15 | 기여: +72470990 (+0.1%)
+      - mod_movementspeed_inc: 0.10 | 기여: +48313993 (+0.1%)
+  • armour_glove_windblade_talons
+    DPS: 54892758863
+    증가량: -7.6% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_projectile_speed_inc: 0.50 | 기여: -1027649211 (-1.8%)
+      - mod_all_skill_damage_inc: 0.15 | 기여: -308294763 (-0.5%)
+      - mod_castspeed_inc: 0.05 | 기여: -102764921 (-0.2%)
+  • armour_glove_evertbright_gauntlet
+    DPS: 53716688916
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_evade_chance_inc: 0.10 | 기여: -871592947 (-1.5%)
+      - mod_fire_damage_inc: 0.10 | 기여: -871592947 (-1.5%)
+      - mod_lightning_damage_inc: 0.10 | 기여: -871592947 (-1.5%)
+  • armour_glove_gauntlets_of_guiding_touch
+    DPS: 53716688916
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_resistance: 0.30 | 기여: -933849586 (-1.7%)
+      - mod_all_ailment_reduce_duration_on_self: 0.30 | 기여: -933849586 (-1.7%)
+      - mod_block_chance: 0.04 | 기여: -124513278 (-0.2%)
+      - mod_lightning_resistance: 0.20 | 기여: -622566391 (-1.1%)
+  • armour_glove_glove_of_dying_light
+    DPS: 53716688916
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_bleeding_damage_inc: 0.35 | 기여: -1830345189 (-3.2%)
+      - mod_chance_to_bleeding: 0.15 | 기여: -784433652 (-1.4%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_per_mod_bleeding_damage_more: 0.04 | 기여: -2614778842 (-4.6%)
+  • armour_glove_immolation_gloves
+    DPS: 53716688916
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_backstab_max: 1.00 | 기여: -1162123930 (-2.1%)
+      - mod_buff_ignorepain_max: 1.00 | 기여: -1162123930 (-2.1%)
+      - mod_physical_resistance: 0.25 | 기여: -290530982 (-0.5%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_per_mod_life_regen: 0.00 | 기여: +0 (+0.0%)
+      - combinemod_buff_backstab_charge_per_mod_all_skill_damage_inc: 0.05 | 기여: -2614778842 (-4.6%)
+  • armour_glove_merciless_gladiators_gloves
+    DPS: 53716688916
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_mana_regen_rate_inc: 0.40 | 기여: -2614778842 (-4.6%)
+    [CombineModValueList]
+      - combinemod_buff_frenzy_charge_per_mod_skill_aoe_radius_inc: 0.02 | 기여: -1307389421 (-2.3%)
+      - combinemod_buff_frenzy_charge_per_mod_castspeed_inc: 0.02 | 기여: -1307389421 (-2.3%)
+  • armour_glove_strombringer_gloves
+    DPS: 53716688916
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_elemental_resistance: 0.10 | 기여: -153810520 (-0.3%)
+      - mod_inc_damage_arctic: 0.30 | 기여: -461431560 (-0.8%)
+      - mod_inc_crit_chance_arctic: 0.30 | 기여: -461431560 (-0.8%)
+      - mod_immune_arctic: 1.00 | 기여: -1538105201 (-2.7%)
+  • armour_glove_sunblessed_gauntlets [현재 장착]
+    DPS: 56331467758
+    증가량: -9.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_all_ailment_damage_inc: 0.20 | 기여: +0 (+0.0%)
+      - mod_all_ailment_damage_more: 0.20 | 기여: +0 (+0.0%)
+      - mod_fire_resistance: 0.25 | 기여: +0 (+0.0%)
+
+[boots] - 11개 테스트
+  • armour_boots_imbued_tempest_boots
+    DPS: 75170007275
+    증가량: +9.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_movementspeed_inc: 0.15 | 기여: +6674045016 (+9.7%)
+    [CombineModValueList]
+      - combinemod_buff_surgeofpower_charge_gain_when_enemy_hit_mod_buff_surgeofpower_chance_to_gain: 1.00 | 기여: +6674045016 (+9.7%)
+  • armour_boots_steps_of_the_war_wyrm
+    DPS: 72447615114
+    증가량: +5.0% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_ignorepain_max: 1.00 | 기여: +1681554406 (+2.5%)
+      - mod_lightning_resistance: 0.35 | 기여: +588544042 (+0.9%)
+      - mod_buff_killingspree_max: 1.00 | 기여: +1681554406 (+2.5%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_per_mod_evade_chance_inc: 0.05 | 기여: +1975826427 (+2.9%)
+      - combinemod_buff_ignorepain_charge_no_mod_movementspeed_inc: 0.05 | 기여: +1975826427 (+2.9%)
+  • armour_boots_infernal_boots
+    DPS: 70521558708
+    증가량: +1.6% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_inc_crit_chance_ignite: 0.20 | 기여: +623260446 (+0.9%)
+      - mod_castspeed_inc: 0.10 | 기여: +311630223 (+0.5%)
+      - mod_chance_to_ignite: 0.20 | 기여: +623260446 (+0.9%)
+      - mod_movementspeed_inc: 0.15 | 기여: +467445334 (+0.7%)
+  • armour_boots_boots_of_the_elemental_triad
+    DPS: 68516100471
+    증가량: -0.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.10 | 기여: +13425474 (+0.0%)
+      - mod_lightning_damage_inc: 0.10 | 기여: +13425474 (+0.0%)
+      - mod_poison_damage_inc: 0.10 | 기여: +13425474 (+0.0%)
+      - mod_cold_resistance: -0.30 | 기여: -40276423 (-0.1%)
+      - mod_elemental_resistance: 0.15 | 기여: +20138212 (+0.0%)
+  • armour_boots_deathmist_sandals
+    DPS: 71071950032
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cursed_enemy_elemental_resistance: -0.10 | 기여: -5151975546 (-7.5%)
+      - mod_cursed_enemy_take_inc_physical_damage: 0.15 | 기여: +7727963319 (+11.3%)
+  • armour_boots_ravagers_pathwalkers
+    DPS: 68336370252
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_life_inc: 0.03 | 기여: -20816349 (0.0%)
+      - mod_movementspeed_inc: 0.20 | 기여: -138775658 (-0.2%)
+    [CombineModValueList]
+      - combinemod_buff_backstab_charge_per_mod_all_skill_damage_inc: 0.05 | 기여: -159592007 (-0.2%)
+  • armour_boots_sabatons_of_vortex
+    DPS: 68336370252
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_evade_chance_inc: 0.10 | 기여: -53197336 (-0.1%)
+      - mod_movementspeed_inc: 0.20 | 기여: -106394671 (-0.2%)
+    [CombineModValueList]
+      - combinemod_buff_frenzy_charge_per_mod_crit_chance_inc: 0.01 | 기여: -159592007 (-0.2%)
+  • armour_boots_shadowmaster_boots [현재 장착]
+    DPS: 68495962259
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_skill_aoe_radius_inc: 0.30 | 기여: +0 (+0.0%)
+      - mod_all_ailment_damage_inc: 0.40 | 기여: +0 (+0.0%)
+      - mod_life_inc: 0.05 | 기여: +0 (+0.0%)
+      - mod_poison_resistance: 0.25 | 기여: +0 (+0.0%)
+  • armour_boots_stormheart_moccasins
+    DPS: 68336370252
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_movementspeed_inc: 0.15 | 기여: -29923501 (0.0%)
+      - mod_chance_to_chill: 0.15 | 기여: -29923501 (0.0%)
+      - mod_chill_effect_inc_on_enemy: 0.20 | 기여: -39898002 (-0.1%)
+      - mod_cold_resistance: 0.30 | 기여: -59847003 (-0.1%)
+  • armour_boots_veterans_plate_battleboots
+    DPS: 68336370252
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_movementspeed_inc: 0.05 | 기여: -17346957 (0.0%)
+      - mod_life_leech_all_damage: 0.01 | 기여: -3469391 (0.0%)
+      - mod_life_inc: 0.05 | 기여: -17346957 (0.0%)
+      - mod_block_chance: 0.05 | 기여: -17346957 (0.0%)
+      - mod_fire_resistance: 0.30 | 기여: -104081744 (-0.2%)
+  • armour_boots_voidwalker
+    DPS: 68336370252
+    증가량: -0.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_evade_chance_inc: 0.15 | 기여: -68396574 (-0.1%)
+      - mod_movementspeed_inc: 0.20 | 기여: -91195432 (-0.1%)
+    [CombineModValueList]
+      - combinemod_buff_invisibility_charge_gain_when_enemy_kill_mod_buff_invisibility_chance_to_gain: 1.00 | 기여: -159592007 (-0.2%)
+
+[amulet] - 11개 테스트
+  • accessory_amulet_dream_figure
+    DPS: 114329874724
+    증가량: -29.9% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_castspeed_inc: 0.15 | 기여: -811429160 (-0.6%)
+      - mod_poison_resistance: 0.35 | 기여: -1893334706 (-1.5%)
+      - mod_buff_backstab_max: 1.00 | 기여: -5409527731 (-4.2%)
+      - mod_buff_killingspree_max: 1.00 | 기여: -5409527731 (-4.2%)
+      - mod_cold_resistance: 0.35 | 기여: -1893334706 (-1.5%)
+  • accessory_amulet_the_excutioners_malice
+    DPS: 107015778173
+    증가량: -33.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_lightning_resistance: 0.30 | 기여: -2622836606 (-2.0%)
+      - mod_all_skill_damage_inc: 0.20 | 기여: -1748557737 (-1.3%)
+      - mod_projectile_chain_additional_target: 1.00 | 기여: -8742788686 (-6.7%)
+      - mod_castspeed_inc: 0.10 | 기여: -874278869 (-0.7%)
+      - mod_projectile_cannot_pierce: 1.00 | 기여: -8742788686 (-6.7%)
+  • accessory_amulet_unstoppable_taint [현재 장착]
+    DPS: 129747028756
+    증가량: -33.8% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_poisoning: 0.25 | 기여: +0 (+0.0%)
+      - mod_poisoning_damage_inc: 0.50 | 기여: +0 (+0.0%)
+  • accessory_amulet_chain_of_the_unmarker
+    DPS: 114481004308
+    증가량: -35.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.20 | 기여: -4070939853 (-3.1%)
+      - mod_poison_resistance: 0.35 | 기여: -7124144743 (-5.5%)
+      - mod_poison_resistance_penetration: 0.20 | 기여: -4070939853 (-3.1%)
+  • accessory_amulet_band_of_eversparks
+    DPS: 103353925503
+    증가량: -35.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_damage_inc: 0.15 | 기여: -4398850542 (-3.4%)
+      - mod_inc_damage_ignite: 0.45 | 기여: -13196551627 (-10.2%)
+      - mod_chance_to_ignite: 0.10 | 기여: -2932567028 (-2.3%)
+      - mod_fire_resistance: 0.20 | 기여: -5865134056 (-4.5%)
+  • accessory_amulet_chocker_of_the_unleashed_storm
+    DPS: 103353925503
+    증가량: -35.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_shock: 0.15 | 기여: -5209165116 (-4.0%)
+      - mod_shock_damage_inc: 0.30 | 기여: -10418330232 (-8.0%)
+      - mod_life_leech_lightning_damage: 0.01 | 기여: -347277674 (-0.3%)
+      - mod_lightning_resistance: 0.30 | 기여: -10418330232 (-8.0%)
+  • accessory_amulet_cosmic_lights
+    DPS: 103353925503
+    증가량: -35.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_elemental_resistance: 0.20 | 기여: -26393103253 (-20.3%)
+    [CombineModValueList]
+      - combinemod_buff_surgeofpower_charge_per_mod_skill_aoe_radius_inc: 0.30 | 기여: -9897413720 (-7.6%)
+      - combinemod_buff_surgeofpower_charge_per_mod_all_ailment_reduce_duration_on_self: 0.50 | 기여: -16495689533 (-12.7%)
+  • accessory_amulet_frozen_tear
+    DPS: 103353925503
+    증가량: -35.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_chance_to_arctic: 0.10 | 기여: -2932567028 (-2.3%)
+      - mod_cold_damage_inc: 0.15 | 기여: -4398850542 (-3.4%)
+      - mod_arctic_duration_inc_on_enemy: 0.30 | 기여: -8797701084 (-6.8%)
+      - mod_cold_resistance: 0.35 | 기여: -10263984598 (-7.9%)
+  • accessory_amulet_rising_new_moon_talisman
+    DPS: 103353925503
+    증가량: -35.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_skill_additional_chain: 1.00 | 기여: -18718512946 (-14.4%)
+      - mod_projectile_speed_inc: 0.40 | 기여: -7487405178 (-5.8%)
+      - mod_life_leech_cold_damage: 0.01 | 기여: -187185129 (-0.1%)
+  • accessory_amulet_wyrmbreakers_amulet
+    DPS: 103353925503
+    증가량: -35.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_elemental_resistance: 0.20 | 기여: -13196551627 (-10.2%)
+      - mod_buff_ignorepain_duration_inc: 0.20 | 기여: -13196551627 (-10.2%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_max_mod_immune_stun: 1.00 | 기여: -25136288813 (-19.4%)
+      - combinemod_buff_ignorepain_charge_per_mod_elemental_resistance: 0.05 | 기여: -1256814441 (-1.0%)
+  • accessory_amulet_mark_of_the_dragon_lord
+    DPS: 17509226386
+    증가량: -89.1% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cannot_crit: 1.00 | 기여: -70148626482 (-54.1%)
+      - mod_chance_to_stun: 0.05 | 기여: -3507431324 (-2.7%)
+      - mod_stun_chance_double_duration: 0.20 | 기여: -14029725296 (-10.8%)
+      - mod_stun_recovery_inc: 0.35 | 기여: -24552019269 (-18.9%)
+
+[belt] - 11개 테스트
+  • accessory_belt_belt_of_the_nightmare
+    DPS: 140825284219
+    증가량: +5.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_curse_duration_on_self_reduction: 0.30 | 기여: +4562924314 (+3.4%)
+      - mod_cursed_enemy_action_speed_red: 0.25 | 기여: +3802436929 (+2.9%)
+  • accessory_belt_death_enveloping_cincture [현재 장착]
+    DPS: 132459922976
+    증가량: +5.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_frenzy_chance_to_gain: 1.00 | 기여: +0 (+0.0%)
+      - mod_buff_frenzy_max: 100.00 | 기여: +0 (+0.0%)
+      - mod_fire_resistance: 0.40 | 기여: +0 (+0.0%)
+  • accessory_belt_star_stealer_waistguard
+    DPS: 145086528754
+    증가량: +2.5% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_castspeed_inc: 0.15 | 기여: +6313302889 (+4.8%)
+      - mod_elemental_resistance_penetration: 0.15 | 기여: +6313302889 (+4.8%)
+  • accessory_belt_forestlords_waistwrap
+    DPS: 134615040744
+    증가량: +1.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_mana_leech_all_damage: 0.01 | 기여: +97959899 (+0.1%)
+      - mod_castspeed_inc: 0.10 | 기여: +979598986 (+0.7%)
+      - mod_life_leech_all_damage: 0.01 | 기여: +97959899 (+0.1%)
+      - mod_evade_chance_inc: 0.10 | 기여: +979598986 (+0.7%)
+  • accessory_belt_stitched_wraiths_belt
+    DPS: 134615040744
+    증가량: +1.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_mana_leech_all_damage: 0.00 | 기여: +0 (+0.0%)
+      - mod_castspeed_inc: 0.10 | 기여: +195919797 (+0.1%)
+      - mod_projectile_pierce_additional_target: 1.00 | 기여: +1959197972 (+1.5%)
+  • accessory_belt_belt_of_night_and_day
+    DPS: 130474878428
+    증가량: -1.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_invisibility_duration_inc: 0.50 | 기여: -1985044547 (-1.5%)
+    [CombineModValueList]
+      - combinemod_buff_invisibility_charge_gain_when_enemy_kill_mod_buff_invisibility_chance_to_gain: 1.00 | 기여: -1985044547 (-1.5%)
+  • accessory_belt_belt_of_primal_majesty
+    DPS: 130474878428
+    증가량: -1.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_resistance: 0.25 | 기여: -679809777 (-0.5%)
+      - mod_stun_recovery_inc: 0.25 | 기여: -679809777 (-0.5%)
+      - mod_life_inc: 0.03 | 기여: -81577173 (-0.1%)
+      - mod_poison_resistance: 0.20 | 기여: -543847821 (-0.4%)
+  • accessory_belt_gale_rouser_belt
+    DPS: 130474878428
+    증가량: -1.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_killingspree_duration_inc: 0.10 | 기여: -397008909 (-0.3%)
+      - mod_lightning_resistance: 0.40 | 기여: -1588035638 (-1.2%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_per_mod_evade_chance_inc: 0.10 | 기여: -1323363032 (-1.0%)
+      - combinemod_buff_killingspree_charge_per_mod_projectile_speed_inc: 0.05 | 기여: -661681516 (-0.5%)
+  • accessory_belt_girdle_of_the_pallid_knight
+    DPS: 130474878428
+    증가량: -1.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cold_damage_inc: 0.15 | 기여: -186097926 (-0.1%)
+      - mod_immune_chill: 1.00 | 기여: -1240652842 (-0.9%)
+      - mod_cold_resistance: 0.25 | 기여: -310163211 (-0.2%)
+      - mod_cold_resistance_penetration: 0.20 | 기여: -248130568 (-0.2%)
+  • accessory_belt_krakenbone_waistplate
+    DPS: 130474878428
+    증가량: -1.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_mana_leech_all_damage: 0.01 | 기여: -53649853 (0.0%)
+      - mod_life_inc: 0.06 | 기여: -321899116 (-0.2%)
+      - mod_elemental_resistance: 0.25 | 기여: -1341246316 (-1.0%)
+      - mod_block_chance: 0.05 | 기여: -268249263 (-0.2%)
+  • accessory_belt_vindicators_dragonhide
+    DPS: 130474878428
+    증가량: -1.4% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_backstab_max: 1.00 | 기여: -1890518617 (-1.4%)
+      - mod_mana_inc: 0.05 | 기여: -94525931 (-0.1%)
+    [CombineModValueList]
+      - combinemod_buff_backstab_charge_per_mod_elemental_damage_inc: 0.20 | 기여: -1985044547 (-1.5%)
+      - combinemod_buff_backstab_charge_per_mod_mana_leech_all_damage: 0.00 | 기여: +0 (+0.0%)
+
+[ring1] - 10개 테스트
+  • accessory_ring_infinite_loop
+    DPS: 223650195611
+    증가량: +14.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_fire_resistance: 0.35 | 기여: +13930425649 (+7.1%)
+      - mod_poison_resistance: 0.35 | 기여: +13930425649 (+7.1%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_gain_when_enemy_kill_mod_buff_ignorepain_chance_to_gain: 0.10 | 기여: +13930425649 (+7.1%)
+      - combinemod_buff_backstab_charge_gain_when_enemy_kill_mod_buff_backstab_chance_to_gain: 0.10 | 기여: +13930425649 (+7.1%)
+  • accessory_ring_ring_of_unrelenting_storms
+    DPS: 187319060699
+    증가량: -4.9% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_physical_damage_reduction: 0.10 | 기여: -1411713936 (-0.7%)
+      - mod_castspeed_inc: 0.15 | 기여: -2117570904 (-1.1%)
+      - mod_lightning_resistance: 0.20 | 기여: -2823427871 (-1.4%)
+      - mod_evade_chance_inc: 0.05 | 기여: -705856968 (-0.4%)
+      - mod_movementspeed_inc: 0.10 | 기여: -1411713936 (-0.7%)
+  • accessory_ring_prophetic_band
+    DPS: 182593990658
+    증가량: -5.6% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_use_aura_skill_reinforce_add: 5.00 | 기여: -11182503098 (-5.7%)
+      - mod_fire_resistance: 0.30 | 기여: -670950186 (-0.3%)
+      - mod_lightning_resistance: 0.30 | 기여: -670950186 (-0.3%)
+      - mod_poison_resistance: 0.30 | 기여: -670950186 (-0.3%)
+  • accessory_ring_devilfang_band
+    DPS: 180427856386
+    증가량: -7.9% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_poison_damage_inc: 0.15 | 기여: -11521115946 (-5.9%)
+      - mod_life_inc: 0.05 | 기여: -3840371982 (-2.0%)
+    [CombineModValueList]
+      - combinemod_buff_killingspree_charge_per_mod_poisoning_damage_inc: 0.10 | 기여: -15361487928 (-7.8%)
+  • accessory_ring_band_of_dark_dominion
+    DPS: 179748869684
+    증가량: -8.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_cursed_enemy_crit_chance_inc: 0.25 | 기여: -3487059702 (-1.8%)
+      - mod_cold_resistance: 0.30 | 기여: -4184471642 (-2.1%)
+      - mod_fire_resistance: 0.30 | 기여: -4184471642 (-2.1%)
+      - mod_lightning_resistance: 0.30 | 기여: -4184471642 (-2.1%)
+  • accessory_ring_ring_of_sundered_souls
+    DPS: 179748869684
+    증가량: -8.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_projectile_additional_fire: 2.00 | 기여: -12580764415 (-6.4%)
+      - mod_evade_chance_inc: 0.05 | 기여: -314519110 (-0.2%)
+      - mod_projectile_speed_inc: 0.30 | 기여: -1887114662 (-1.0%)
+      - mod_elemental_resistance: 0.20 | 기여: -1258076442 (-0.6%)
+  • accessory_ring_seal_of_the_bloodseeker
+    DPS: 179748869684
+    증가량: -8.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_bleeding_damage_inc: 0.40 | 기여: -9871061310 (-5.0%)
+      - mod_chance_to_bleeding: 0.25 | 기여: -6169413319 (-3.2%)
+  • accessory_ring_the_horsemans_ring
+    DPS: 179748869684
+    증가량: -8.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_ignorepain_max: -1.00 | 기여: -16040474630 (-8.2%)
+    [CombineModValueList]
+      - combinemod_buff_ignorepain_charge_no_mod_movementspeed_inc: 0.20 | 기여: -10693649753 (-5.5%)
+      - combinemod_buff_ignorepain_charge_no_mod_elemental_resistance_max: 0.10 | 기여: -5346824877 (-2.7%)
+  • accessory_ring_timeless_band_of_the_archmage
+    DPS: 179748869684
+    증가량: -8.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_buff_surgeofpower_duration_inc: 0.30 | 기여: -16040474630 (-8.2%)
+    [CombineModValueList]
+      - combinemod_buff_surgeofpower_charge_gain_when_enemy_kill_mod_buff_surgeofpower_chance_to_gain: 0.10 | 기여: -16040474630 (-8.2%)
+  • accessory_ring_whispers_of_insanity [현재 장착]
+    DPS: 195789344314
+    증가량: -8.2% (빌드 DPS 기준) ← 원래 빌드 대비
+    [UniqueModValueList]
+      - mod_crit_chance_inc: 0.10 | 기여: +0 (+0.0%)
+      - mod_crit_multiplier_inc: 0.30 | 기여: +0 (+0.0%)
+
+====================================
+
+✅ 리포트 저장 완료

@@ -1,0 +1,26 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+*.csproj
+*.sln
+*.userprefs
+
+# Node
+node_modules/
+lib/
+coverage/
+
+# 자격증명 — 절대 커밋 금지
+service_account.json
+*.p12
+*.pem
+.env
+.env.*
+google-services.json
+GoogleService-Info.plist
+
+# OS
+.DS_Store
+Thumbs.db

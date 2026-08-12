@@ -1,0 +1,267 @@
+{
+  "version": "1.0",
+  "description": "Phase 5 server healthcheck 스캐너 룰 정의. 각 rule은 engine별로 실행되어 finding을 생성한다.",
+  "rules": [
+    {
+      "id": "SRV-ESL-001",
+      "name": "floating promise",
+      "severity": "S1",
+      "category": "data-corruption",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "@typescript-eslint/no-floating-promises"
+      }
+    },
+    {
+      "id": "SRV-ESL-002",
+      "name": "misused promise",
+      "severity": "S1",
+      "category": "data-corruption",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "@typescript-eslint/no-misused-promises"
+      }
+    },
+    {
+      "id": "SRV-ESL-003",
+      "name": "async promise executor",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "no-async-promise-executor"
+      }
+    },
+    {
+      "id": "SRV-ESL-004",
+      "name": "async without await",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "@typescript-eslint/require-await"
+      }
+    },
+    {
+      "id": "SRV-ESL-005",
+      "name": "prefer-const (linted)",
+      "severity": "S4",
+      "category": "maintenance",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "prefer-const"
+      }
+    },
+    {
+      "id": "SRV-ESL-006",
+      "name": "no-var",
+      "severity": "S4",
+      "category": "maintenance",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "no-var"
+      }
+    },
+    {
+      "id": "SRV-ESL-007",
+      "name": "console.log in src",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "eslint",
+      "config": {
+        "ruleId": "no-console"
+      }
+    },
+    {
+      "id": "SRV-TSP-001",
+      "name": "dead export (ts-prune)",
+      "severity": "S4",
+      "category": "maintenance",
+      "engine": "ts-prune",
+      "config": {
+        "excludePatterns": [
+          "src/index.ts",
+          "src/Data/Generated",
+          "\\(used in module\\)"
+        ]
+      }
+    },
+    {
+      "id": "SRV-MDG-001",
+      "name": "circular dependency",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "madge",
+      "config": {
+        "entry": "src/index.ts",
+        "extensions": ["ts"]
+      }
+    },
+    {
+      "id": "SRV-CPX-001",
+      "name": "high cyclomatic complexity (>15)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ts-complex",
+      "config": {
+        "threshold": 15,
+        "sources": ["src"]
+      }
+    },
+    {
+      "id": "SRV-RG-001",
+      "name": "GachaHash 패턴 미적용 재화 소비",
+      "severity": "S1",
+      "category": "data-corruption",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "class\\s+C(Currency|Product|Gacha|Ticket)_\\w+",
+        "paths": ["src/API/CoreData"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts"],
+        "negativeCheck": {
+          "pattern": "GachaHash|verifyHash|runTransaction",
+          "scope": "file"
+        },
+        "message": "재화/가챠 관련 클래스가 GachaHash/runTransaction 검증 없이 동작할 가능성"
+      }
+    },
+    {
+      "id": "SRV-RG-002",
+      "name": "BigInt 불안전 캐스팅 (Number(bigInt))",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "Number\\s*\\(\\s*\\w*[Bb]ig|parseInt\\s*\\(\\s*\\w*[Bb]ig",
+        "paths": ["src"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts", "**/Generated/**"],
+        "message": "BigInt 값을 Number/parseInt로 변환 — 2^53 초과 값에서 정밀도 손실"
+      }
+    },
+    {
+      "id": "SRV-RG-003",
+      "name": "Early Exit 위반 — createInstance 후 validation",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "createInstance\\s*\\([^)]*\\)[\\s\\S]{0,400}throwLogicError",
+        "paths": ["src/API"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts"],
+        "multiline": true,
+        "message": "DB createInstance 후 검증 실패로 throwLogicError — DB 비용 낭비"
+      }
+    },
+    {
+      "id": "SRV-RG-004",
+      "name": "독립 await 3연속 (Promise.all 후보)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "await [^;\\n]+;\\s*\\n\\s*await [^;\\n]+;\\s*\\n\\s*await ",
+        "paths": ["src/API"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts"],
+        "multiline": true,
+        "message": "3개 이상 연속 await — 독립적이면 Promise.all 병렬화 후보"
+      }
+    },
+    {
+      "id": "SRV-RG-005",
+      "name": "try/catch 금지 (Rule 04 회귀)",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "\\btry\\s*\\{",
+        "paths": ["src/API"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts", "**/DataBundle.ts"],
+        "message": "CTemplateBase 상속 클래스의 try/catch — Rule 04 위반. handleRequest/executeFunction이 예외 처리를 담당해야 함"
+      }
+    },
+    {
+      "id": "SRV-RG-006",
+      "name": "console.log 회귀 (Rule 06)",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "console\\.(log|error|warn)\\s*\\(",
+        "paths": ["src"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts", "**/Generated/**"],
+        "message": "src/*.ts에서 console.* 사용 — logDebug/logError/logCategory 사용해야 함 (Rule 06)"
+      }
+    },
+    {
+      "id": "SRV-RG-007",
+      "name": "에러 메시지 함수명 누락 (Rule 04)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "throw(Logic|System)Error\\s*\\(\\s*[`\"'](?![A-Za-z_][\\w]*\\(\\))",
+        "paths": ["src"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts", "**/Generated/**"],
+        "message": "throwLogicError/throwSystemError 메시지에 `함수명():` prefix 누락 — Rule 04 위반"
+      }
+    },
+    {
+      "id": "SRV-RG-008",
+      "name": "Side-effect import (Rule 06)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "^\\s*import\\s+[\"']\\.\\.?/",
+        "paths": ["src"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts", "**/Generated/**"],
+        "message": "로컬 side-effect import — Named import 필수 (Rule 06)"
+      }
+    },
+    {
+      "id": "SRV-RG-009",
+      "name": "DB Interface optional 필드 (Rule 07)",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "^\\s*\\w+\\?\\s*:\\s*(string|number|boolean|\\w+\\[\\]|Record)",
+        "paths": ["src/Data/Generated", "src/Data/Types", "src/Data/Shared"],
+        "globs": ["*.ts"],
+        "excludeGlobs": ["**/*.test.ts"],
+        "multiline": true,
+        "message": "DB 저장 interface의 optional 필드 — Rule 07 위반. 기본값 명시적 설정 필요"
+      }
+    },
+    {
+      "id": "SRV-CUST-001",
+      "name": "가챠 weight 합 검증",
+      "severity": "S1",
+      "category": "data-corruption",
+      "engine": "custom",
+      "config": {
+        "script": "scripts/check-gacha-weights.ts",
+        "message": "GameDB gacha weight 합 ≠ 1.0 또는 0"
+      }
+    },
+    {
+      "id": "SRV-CUST-002",
+      "name": "Enum offset 100단위 위반 (Rule 07)",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "custom",
+      "config": {
+        "script": "scripts/check-enum-offsets.ts",
+        "message": "Enum 값이 100 단위 offset 규칙 위반 — C# 호환성 문제"
+      }
+    }
+  ]
+}

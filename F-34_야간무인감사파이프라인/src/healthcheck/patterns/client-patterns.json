@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "description": "Phase 5 Unity 클라이언트 healthcheck 스캐너 룰 정의. 탐지 전용 — 자동 수정 없음.",
+  "tier1Paths": [
+    "Assets/Source/Logic/Data/Status/BattleStatus",
+    "Assets/Source/Logic/Battle/BattleMode/BattleModeBase.cs",
+    "Assets/Source/Logic/Manager/GameManager/GameBattleUtilityManager.cs",
+    "Assets/Source/Logic/Manager/GameAPIManager/GameAPIUserManager.cs",
+    "Assets/Source/Logic/Battle/ModCalculator",
+    "Assets/Source/Logic/Gacha/ClientGacha.cs",
+    "Assets/Source/Shared/Types"
+  ],
+  "tier2Paths": [
+    "Assets/Source/Logic"
+  ],
+  "rules": [
+    {
+      "id": "CLI-UNT-001",
+      "name": "Unity Analyzers 경고 (UNT*)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "unicli",
+      "config": {
+        "command": "CompileAndLog",
+        "filter": "warning CS|warning UNT",
+        "message": "Unity Roslyn analyzer 경고 — 성능/수명 주기 이슈 가능성"
+      }
+    },
+    {
+      "id": "CLI-RG-001",
+      "name": "Update/LateUpdate 내 LINQ (GC alloc)",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "(?:void|IEnumerator)\\s+(?:Update|LateUpdate|FixedUpdate)\\s*\\([\\s\\S]{0,2000}?\\.(?:Select|Where|ToList|ToArray|OrderBy|GroupBy|Any|All)\\s*\\(",
+        "paths": ["Assets/Source/Logic"],
+        "globs": ["*.cs"],
+        "excludeGlobs": ["*.meta"],
+        "multiline": true,
+        "message": "Update 계열 메서드 내 LINQ — 매 프레임 GC alloc 발생"
+      }
+    },
+    {
+      "id": "CLI-RG-002",
+      "name": "Update 내 GetComponent 호출",
+      "severity": "S2",
+      "category": "gameplay",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "(?:void|IEnumerator)\\s+(?:Update|LateUpdate|FixedUpdate)\\s*\\([\\s\\S]{0,2000}?\\.GetComponent(?:InChildren|InParent)?\\s*<",
+        "paths": ["Assets/Source/Logic"],
+        "globs": ["*.cs"],
+        "multiline": true,
+        "message": "Update 내 GetComponent — 캐싱 필요"
+      }
+    },
+    {
+      "id": "CLI-RG-003",
+      "name": "결정론 경계 밖 System.Random / UnityEngine.Random",
+      "severity": "S1",
+      "category": "data-corruption",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "\\b(System\\.Random|UnityEngine\\.Random|new\\s+Random\\s*\\()",
+        "paths": ["Assets/Source/Logic/Gacha", "Assets/Source/Logic/Battle", "Assets/Source/Shared/Types"],
+        "globs": ["*.cs"],
+        "excludeGlobs": ["**/*Test*.cs", "**/*Editor*.cs"],
+        "message": "결정론 영역에서 비결정론적 Random — GachaHash/RandomHash 사용해야 함"
+      }
+    },
+    {
+      "id": "CLI-RG-004",
+      "name": "코루틴 핸들 미보관 (누수 의심)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "^(?!\\s*(?:var|Coroutine|_\\w+)\\s*=\\s*)[\\s\\S]{0,10}StartCoroutine\\s*\\(",
+        "paths": ["Assets/Source/Logic"],
+        "globs": ["*.cs"],
+        "multiline": true,
+        "message": "StartCoroutine 결과를 보관하지 않음 — StopCoroutine 불가, 누수 가능"
+      }
+    },
+    {
+      "id": "CLI-RG-005",
+      "name": "이벤트 구독(+=) 대비 해제(-=) 누락",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep-balance",
+      "config": {
+        "addPattern": "\\b\\w+\\.\\w+\\s*\\+=\\s*\\w+",
+        "removePattern": "\\b\\w+\\.\\w+\\s*-=\\s*\\w+",
+        "paths": ["Assets/Source/Logic"],
+        "globs": ["*.cs"],
+        "message": "이벤트 += 횟수 > -= 횟수 — 메모리 누수 가능"
+      }
+    },
+    {
+      "id": "CLI-RG-006",
+      "name": "문자열 연결 반복 (Logic 폴더)",
+      "severity": "S3",
+      "category": "perf",
+      "engine": "ripgrep",
+      "config": {
+        "pattern": "for\\s*\\([^)]+\\)[\\s\\S]{0,300}?\\w+\\s*\\+=\\s*[\"']",
+        "paths": ["Assets/Source/Logic"],
+        "globs": ["*.cs"],
+        "excludeGlobs": ["**/*Debug*.cs"],
+        "multiline": true,
+        "message": "for 루프 내 string += — StringBuilder 권장"
+      }
+    },
+    {
+      "id": "CLI-WC-001",
+      "name": "LOC > 1000 (리팩토링 후보)",
+      "severity": "S4",
+      "category": "maintenance",
+      "engine": "loc-count",
+      "config": {
+        "threshold": 1000,
+        "paths": ["Assets/Source/Logic"],
+        "globs": ["*.cs"],
+        "message": "단일 파일 LOC > 1000 — 분리 고려"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-04-12",
+  "steps": {
+    "ts-golden": {
+      "status": "SUCCESS",
+      "details": "5 passing"
+    },
+    "cs-golden": {
+      "status": "SKIPPED",
+      "details": "unicli exec 실패: exit=1, Warning: unknown parameter 'filter' for command 'RunEditModeTests'\r\n"
+    }
+  },
+  "timestamp": "2026-04-12T06:35:12.561Z"
+}
