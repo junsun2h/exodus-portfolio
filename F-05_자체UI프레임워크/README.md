@@ -58,7 +58,7 @@ UI 작업은 **GPT Image로 시안을 먼저 뽑고, 그 시안을 UXML로 구�
 
 **시안** — GPT Image 생성
 
-![장비 화면 시안](img/equipment_시안.png)
+![장비 화면 시안](img/equipment_시안.webp)
 
 **구현** — `TK_Screen_Equipment.uxml` + USS
 
