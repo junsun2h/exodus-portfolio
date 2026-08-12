@@ -25,6 +25,53 @@
 - **슬라이드 자료**: MOD 분류체계 표 — **캡처 필요**
 
 
+<!-- EVIDENCE:START -->
+## 실행 결과
+
+> 아래는 이 도구가 실제로 출력한 리포트의 **발췌**입니다. 원본 전체는 `src/` 에 그대로 들어 있습니다.
+
+<details>
+<summary>MOD 백분율 처리 리포트 — 어떤 MOD가 어느 단계에서 어떤 규칙으로 곱해졌는지 전 단계 추적 &nbsp;·&nbsp; <code>src/ModPercentageReport_2025-12-21_01-18-55.txt</code></summary>
+
+```text
+[단계 1] Flat Damage (기본 피해)
+  설명: 속성별 기본 피해 + 공통 피해를 합산
+  공식: ∑(mod_xxx_damage)
+  결과: 27824363.691596
+  사용 MOD (1개):
+    - mod_all_damage (FLOAT)
+      저장값: 27824363.691596 | 표시값: 27824363.691596
+      처리: Direct | 공식: total += value
+
+════════════════════════════════════════════════════════════════════
+[단계 2] Inc 배율 (Increased)
+  설명: 증가 MOD들을 합산 후 (1 + 합계)로 배율 계산
+  공식: 1 + ∑(mod_xxx_inc)
+  결과: 37.515500
+  사용 MOD (3개):
+    - mod_elemental_damage_inc (FLOAT_PER)
+      저장값: 0.250000 | 표시값: 25.00%
+      처리: Direct | 공식: totalInc += value
+    - mod_all_skill_damage_inc (FLOAT_PER)
+      저장값: 4.856000 | 표시값: 485.60%
+      처리: Direct | 공식: totalInc += value
+    - mod_all_damage_inc (FLOAT_PER)
+      저장값: 31.409500 | 표시값: 3140.95%
+      처리: Direct | 공식: totalInc += value
+
+════════════════════════════════════════════════════════════════════
+[단계 3] More 배율 (More)
+  설명: 증폭 MOD들을 개별적으로 (1 + value)를 곱셈
+  공식: ∏(1 + mod_xxx_more)
+  결과: 1.000000
+
+════════════════════════════════════════════════════════════════════
+```
+
+</details>
+
+<!-- EVIDENCE:END -->
+
 ## 수록 파일
 
 - `Assets/Editor/BattleSimulator/Reports/ModPercentage/ModPercentageReport_2025-12-21_01-18-55.txt`

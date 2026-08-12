@@ -4,6 +4,34 @@
 
 **구간** Phase 0 (수작업기) | **포지션** 클라 | **AI** 미사용
 
+### 구조 — 트리형 팝업 스택 — 선형 스택으로는 표현할 수 없는 요구
+
+```mermaid
+flowchart TB
+    subgraph L3["3층 — PXUI 컴포넌트 라이브러리"]
+        C1["PXListView<br/><i>셀 재활용 가상화</i>"]
+        C2["PXButton"]
+        C3["PXReddot"]
+        C4["PXProgress"]
+    end
+
+    subgraph L2["2층 — GameUIManager 트리형 팝업 스택"]
+        direction TB
+        ROOT["Lobby"] --> P1["Equipment"]
+        P1 --> P2["강화 확인 팝업"]
+        P1 --> P3["옵션 변경 팝업"]
+        ROOT --> P4["Shop"]
+    end
+
+    subgraph L1["1층 — BaseUserWidget 생명주기"]
+        direction LR
+        W1["OnPreOpenedWidget<br/><i>데이터 준비</i>"] --> W2["OnOpenedWidget<br/><i>표시</i>"] --> W3["OnAfterOpenedWidget<br/><i>연출</i>"] --> W4["OnClosedWidget"]
+    end
+
+    L2 -.- NOTE["UID로 계층 표시 제어<br/><b>부모는 남기고 자식만 닫기</b>가 가능해야 해서<br/>선형 스택이 아니라 트리로 설계"]
+    L1 --> L2 --> L3
+```
+
 - **문제**: 팝업이 팝업을 열고 그 위에 또 팝업이 열리는 구조에서 (1) 어느 팝업이 최상위인지, (2) 뒤로가기를 누르면 무엇이 닫혀야 하는지, (3) 아래 팝업을 가릴지 남길지를 매번 개별 처리하면 UI가 곧 통제 불능이 된다. 또한 Unity 기본 UI 컴포넌트만으로는 리스트 수백 항목에서 프레임이 무너진다.
 - **해결**: UI를 **3층으로 분리**했다.
   1. **위젯 생명주기** — `BaseUserWidget`이 오픈/클로즈 시퀀스를 단계로 고정한다. `OnPreOpenedWidget`(데이터 준비) → `OnOpenedWidget`(표시) → `OnAfterOpenedWidget`(연출) → `OnClosedWidget` → `OnShowEvent`/`OnHideEvent`. 각 화면은 필요한 단계만 오버라이드한다.

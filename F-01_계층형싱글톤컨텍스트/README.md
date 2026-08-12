@@ -4,6 +4,31 @@
 
 **구간** Phase 0 (수작업기) | **포지션** 클라·TD | **AI** 미사용
 
+### 구조 — 초기화 순서 문제를 생명주기 단계로 해결한 구조
+
+```mermaid
+flowchart TB
+    U["Unity Engine"] -->|"Awake · Update · OnDestroy 등 20종"| AC["<b>ApplicationContext</b><br/>씬에 존재하는 유일한 MonoBehaviour"]
+    AC --> LC["LogicContext<br/>매니저 58개"]
+    AC --> MC["MonoContext<br/>매니저 7개"]
+
+    subgraph INIT["초기화 — 단계를 나눠 순서 의존성을 제거"]
+        direction LR
+        S1["InitData<br/><i>의존 없는 초기화</i>"] --> S2["InitAfterGameDB<br/><i>정적 데이터 필요</i>"] --> S3["InitAfterUserData<br/><i>유저 데이터 필요</i>"]
+    end
+
+    subgraph SHUT["종료 — 순서를 지키지 않으면 네이티브 크래시"]
+        direction LR
+        T1["ShutdownFirebase<br/><i>스냅샷 리스너 해제</i>"] --> T2["OnDestroy"] --> T3["네이티브 리소스 해제"]
+    end
+
+    LC --> INIT
+    MC --> INIT
+    INIT -.-> SHUT
+
+    AC -.->|"GetConstructors() 검사<br/>public 생성자 발견 시 즉시 예외"| G(["싱글톤 규약<br/>런타임 강제"])
+```
+
 - **문제**: 매니저가 수십 개로 늘어나면 (1) 각자 `MonoBehaviour`를 들고 Unity 생명주기를 개별 구독해 호출 순서가 비결정적이 되고, (2) "GameDB 로드 후에 초기화되어야 하는 매니저"와 "유저 데이터 수신 후에 초기화되어야 하는 매니저"가 뒤섞여 초기화 순서 버그가 상시 발생한다.
 - **해결**: **씬에 존재하는 `MonoBehaviour`는 `ApplicationContext` 하나뿐**이고, 나머지 65개 매니저는 순수 C# 싱글톤으로 컨텍스트 딕셔너리에 등록된다. `ApplicationContext`가 Unity 이벤트를 받아 등록된 전체 매니저에 순차 전파한다.
   - 초기화 순서 문제는 **커스텀 생명주기 훅**으로 구조화했다. `InitData` → `InitAfterGameDB` → `InitAfterUserData` 순으로 단계가 나뉘어 있어, 각 매니저는 "나는 어느 단계에 초기화되어야 하는가"만 선언하면 된다. 호출 순서를 매니저끼리 알 필요가 없다.

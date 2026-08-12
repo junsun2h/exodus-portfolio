@@ -4,6 +4,31 @@
 
 **구간** Phase 0 (수작업기) | **포지션** 서버·TD | **AI** 미사용
 
+### 구조 — 베이스가 예외를 독점해 보안 검사 누락을 구조적으로 차단
+
+```mermaid
+flowchart TB
+    REQ["클라이언트 요청"] --> B
+
+    subgraph B["<b>CTemplateBase</b> — 모든 요청의 공통 경로"]
+        direction TB
+        A1["인증 검증"] --> A2["세션키 검증"] --> A3["레이트리밋"] --> A4["입력 스키마 validation"]
+    end
+
+    B --> LIFE
+
+    subgraph LIFE["강제되는 생명주기"]
+        direction LR
+        L1["setUp()<br/><i>데이터 로드</i>"] --> L2["execute()<br/><i>비즈니스 로직</i>"] --> L3["updateToDB()<br/><i>변경분 반영</i>"]
+    end
+
+    LIFE --> RES["표준 JSON 응답"]
+    LIFE -.->|"예외 발생"| ERR["베이스가 포착<br/>ErrorReport 자동 로깅"]
+    ERR --> RES
+
+    ERR -.- NOTE["<b>파생 클래스는 try/catch 금지</b><br/>예외를 베이스가 독점하므로<br/>보안 검사를 빠뜨리는 것이 불가능"]
+```
+
 - **문제**: Cloud Functions 엔드포인트가 100개를 넘어가면 (1) 인증 검사·세션 확인·레이트리밋·에러 응답 포맷을 매 함수가 개별 구현하게 되고, (2) 그중 하나라도 빠뜨리면 곧바로 보안 구멍이며, (3) 함수별 메모리·타임아웃 설정을 개별 관리하면 콜드스타트와 비용이 통제되지 않는다.
 - **해결**: **3계층 상속 템플릿**으로 고정했다.
   - `CTemplateBase` → `C[Feature]Base` → `C[Feature]_[Action]`

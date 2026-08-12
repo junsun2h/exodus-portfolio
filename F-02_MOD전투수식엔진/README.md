@@ -4,6 +4,26 @@
 
 **구간** Phase 0 (수작업기) | **포지션** 클라·TD | **AI** 미사용
 
+### 구조 — Flat / Increased / More 3단 연산과 9단계 피해 파이프라인
+
+```mermaid
+flowchart LR
+    subgraph CALC["ModCalculator — 최종값 = Flat x (1 + SUM Inc) x PROD (1 + More_i)"]
+        direction TB
+        F["<b>Flat</b><br/>단순 합산"] --> I["<b>Increased</b><br/>전부 합산 후<br/><i>한 번만</i> 곱셈"] --> M["<b>More</b><br/>각각 <i>개별</i> 곱셈<br/>최대 16개 하드캡"]
+    end
+    CALC --> P
+
+    subgraph P["피해 파이프라인 9단계"]
+        direction TB
+        P1["1 회피"] --> P2["2 방어"] --> P3["3 치명타"] --> P4["4 물리방어"] --> P5["5 속성저항 · 관통"]
+        P5 --> P6["6 즉사"] --> P7["7 피해증감"] --> P8["8 조건부"] --> P9["9 다중타격"]
+    end
+
+    P --> OUT(["최종 피해"])
+    CALC -.->|"GetCalculationBreakdown()"| DBG(["계산 과정 덤프<br/><i>시뮬레이터 · 골든테스트의 전제</i>"])
+```
+
 - **문제**: 방치형 RPG는 장비·스킬·룬·성좌·각성 등 수십 개 출처에서 스탯 보정이 쏟아진다. 이를 단순 합산으로 처리하면 (1) 보정이 늘수록 수치가 선형 폭발하고, (2) "공격력 +30%"가 출처마다 다른 의미를 갖게 되어 밸런싱이 불가능해진다.
 - **해결**: Path of Exile의 검증된 수식 체계를 도입해 **모든 보정을 3종 연산자로 정규화**했다.
   - `Flat` — 합산 (additive)
