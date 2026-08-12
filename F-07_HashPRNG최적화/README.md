@@ -92,9 +92,23 @@ this.excludeJson(ExcludeCoreDataKey.EQUIPMENT);
 <!-- IMAGES:START -->
 ## 화면
 
-![뽑기 화면 — x10 / x30 / x300 이 서버 1회 왕복으로 처리된다](img/gacha.webp)
+![스테이지 클리어 보상 — 이 장비 목록이 서버 응답에서 통째로 빠진다](img/stage-clear-reward.webp)
 
-<sub>뽑기 화면 — x10 / x30 / x300 이 서버 1회 왕복으로 처리된다</sub>
+<sub><b>이 카드가 말하는 내용이 화면에 그대로 있습니다.</b> 스테이지 클리어 보상으로 장비 10종이 떨어졌고,
+각각 강화 수치(<code>+2</code> · <code>+5</code>)와 등급(일반/고급/희귀)이 붙어 있습니다.
+서버가 이걸 JSON으로 실어 보내면 응답에서 가장 무거운 블록이 되는데, <b>보내지 않습니다</b> —
+클라가 같은 PRNG 시퀀스로 <b>동일한 목록을 스스로 만들어내기 때문</b>입니다.
+서버는 <code>excludeJson(ExcludeCoreDataKey.EQUIPMENT)</code> 한 줄로 이 블록을 빼고,
+클라는 <code>StageEquipmentRewardRoller.Roll(PRNG, count)</code> 로 채웁니다.
+매 <code>Stage_Clear</code> · <code>EndLoop</code> 마다 반복되는 왕복이라 감축 효과가 그대로 누적됩니다.</sub>
+
+![x300 연속 소환 결과 — 300회 추첨이 서버 1회 왕복으로 끝난다](img/gacha-x300.webp)
+
+<sub><b>x300 연속 소환 결과입니다.</b> 300회 추첨이 <b>서버 왕복 한 번</b>으로 끝나고,
+중복은 합쳐진 개수로 표시됩니다(<code>x6</code> · <code>x5</code> · <code>x4</code>).
+300번을 뽑는 것과 300번을 <b>요청</b>하는 것은 다른 문제고, 이 화면이 후자를 1회로 만든 결과입니다.
+등급 분포(전설 1 / 영웅 다수 / 희귀 다수)가 눈으로 확인되는 것도 이 구조 덕분입니다 —
+클라와 서버가 같은 시퀀스를 밟으므로, <b>결과를 받기 전에 이미 클라가 알고 있습니다.</b></sub>
 
 <!-- IMAGES:END -->
 
