@@ -166,7 +166,7 @@ README 카드의 **근거** 항목에 실제 산출물 경로가 적혀 있습�
 ## 고지
 
 - 원본 프로젝트에서 **피처 단위로 발췌**한 코드입니다. 의존성이 잘려 있어 단독 빌드되지 않습니다.
-- 코드 안의 로컬 절대경로(`E:\Work\...`)는 `<project-root>`로 치환했습니다. 그 외 코드는 원본 그대로입니다.
+- 코드 안의 로컬 절대경로(`E:\Work\...`)는 `<project-root>`로, Firebase 프로젝트 ID는 `<project-id>`로 치환했습니다. 그 외 코드는 원본 그대로입니다.
   단 하나의 예외는 `F-49/src/UCharacterActor.HitFeel.excerpt.cs`로, 3,182줄짜리 파일에서 해당 구간만 잘라낸 것이며 파일 첫머리에 원본 행 범위를 명시했습니다.
   (에디터 창 **스크린샷**에는 경로가 그대로 보이는 곳이 있습니다 — 그 경로 자체가 캡처의 설명 대상이라 두었습니다.)
 - 서드파티 의존: Unity 6, Firebase Functions v2, Odin Inspector(에디터 툴), SimpleJSON, Newtonsoft.Json, UniTask
