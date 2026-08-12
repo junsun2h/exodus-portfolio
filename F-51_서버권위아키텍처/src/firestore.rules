@@ -1,0 +1,144 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================
+    // 서버 우편함 데이터 - 읽기는 허용, 쓰기는 서버만
+    // =========================================
+    match /ServerMailbox/{document=**} {
+      // 점검보상, 서버 전체 메일 등은 모든 인증된 사용자가 읽을 수 있어야 함
+      allow read: if request.auth != null;
+      allow write: if false; // 쓰기는 서버(Cloud Functions)에서만 가능
+    }
+
+    // 클라이언트가 실제로 조회하는 경로 (GameDBClientManager.cs 의 _serverMailboxRef).
+    // 위의 최상위 /ServerMailbox 규칙과 경로가 달라 매칭되지 않으므로 별도로 선언한다.
+    // 이 조회는 로그인 전(타이틀 화면 데이터 로드 단계)에 실행되므로 request.auth 가 null 이다.
+    // 서버 공통 우편함 메타데이터라 개인정보가 없어 미인증 읽기를 허용한다.
+    match /GameData/ServerMailbox/ServerMailbox/{document=**} {
+      allow read: if true;
+      allow write: if false; // 쓰기는 서버(Cloud Functions)에서만 가능
+    }
+
+    // =========================================
+    // 사용자 개인 데이터 (Server/Server_{serverId}/GameData/Users/UUID/{userId})
+    // =========================================
+    match /Server/{serverId}/GameData/Users/UUID/{userId} {
+      // 사용자 하위 컬렉션 접근 (모든 CoreData 타입 포함) - 세션키 검증 추가
+      match /{collectionId}/{documentId} {
+        // Step 1: sessionKey 존재 여부만 검증
+        allow read, write: if request.auth != null &&
+                            request.auth.uid == userId &&
+                            isValidSession();
+      }
+    }
+
+    // =========================================
+    // GameDB 컬렉션 - 관리자 전용 (Unity Editor에서 사용)
+    // =========================================
+    match /GameDB/{document=**} {
+      // 개발 환경: 모든 인증된 사용자가 접근 가능
+      allow read, write: if request.auth != null;
+    }
+
+    // =========================================
+    // 랭킹 시스템 (Server/Server_{serverId}/Rank)
+    // =========================================
+    match /Server/{serverId}/Rank/{document=**} {
+      // 랭킹 데이터 읽기: 모든 인증된 사용자 허용
+      allow read: if request.auth != null;
+      // 랭킹 데이터 쓰기: Firebase Admin SDK에서만 허용 (Cloud Functions)
+      // Firebase Admin SDK는 보안 규칙을 우회하므로 실제로는 항상 허용됨
+      allow write: if false; // 클라이언트에서는 쓰기 불가, 서버(Cloud Functions)에서만 가능
+    }
+
+    // =========================================
+    // ServerEvent - 통합 이벤트 컬렉션
+    // 채팅, 공지사항, 시스템 메시지를 하나의 최상위 컬렉션에서 관리
+    // =========================================
+    match /ServerEvent/{featureType} {
+      // ServerEvent 하위 문서 (Chat, Notice, SystemMessage) 메타데이터 읽기
+      allow read: if request.auth != null;
+      // 메타데이터 쓰기: Cloud Functions(Admin SDK)에서만 가능
+      allow write: if false;
+
+      // -----------------------------------------
+      // 채팅 시스템: /ServerEvent/Chat/Channels/{channelId}/Message/{messageId}
+      // -----------------------------------------
+      match /Channels/{channelId} {
+        // 채널 메타데이터 읽기: 모든 인증된 사용자
+        allow read: if request.auth != null;
+        // 채널 생성: 인증된 사용자만 가능
+        allow create: if request.auth != null &&
+                      request.auth.uid != null &&
+                      request.resource.data.createdBy == request.auth.uid;
+        // 채널 업데이트: 모든 인증된 사용자가 가능
+        allow update: if request.auth != null;
+
+        // 채널의 일반 메시지 컬렉션
+        match /Message/{messageId} {
+          // 메시지 읽기: 모든 인증된 사용자
+          allow read: if request.auth != null;
+          // 메시지 생성: 인증된 사용자가 자신의 UUID로만 생성 가능
+          allow create: if request.auth != null &&
+                        request.auth.uid != null &&
+                        request.resource.data.uuid == request.auth.uid;
+          // 메시지 수정/삭제: 메시지 작성자만 가능
+          allow update, delete: if request.auth != null &&
+                                 resource.data.uuid == request.auth.uid;
+        }
+      }
+
+      // -----------------------------------------
+      // 공지사항 시스템: /ServerEvent/Notice/Servers/{serverId}/Message/{noticeId}
+      // -----------------------------------------
+      match /Servers/{serverId} {
+        // 서버 메타데이터 읽기: 모든 인증된 사용자
+        allow read: if request.auth != null;
+        // 서버 메타데이터 쓰기: Cloud Functions(Admin SDK)에서만 가능
+        allow write: if false;
+
+        // 공지사항 메시지 컬렉션
+        match /Message/{noticeId} {
+          // 공지사항 읽기: 모든 인증된 사용자
+          allow read: if request.auth != null;
+          // 공지사항 쓰기: 클라이언트 차단, Cloud Functions(Admin SDK)에서만 가능
+          allow write: if false;
+        }
+
+        // 시스템 메시지 컬렉션 (SystemMessage 기능용)
+        match /Messages/{messageId} {
+          // 시스템 메시지 읽기: 모든 인증된 사용자
+          allow read: if request.auth != null;
+          // 시스템 메시지 쓰기: 클라이언트 차단, Cloud Functions(Admin SDK)에서만 가능
+          allow write: if false;
+        }
+      }
+    }
+
+    // =========================================
+    // 기타 모든 경로 차단
+    // =========================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+
+  // =========================================
+  // 보안 검증 함수들
+  // =========================================
+
+  /**
+   * 세션키 유효성 검증 (Firebase Auth Custom Claims 방식)
+   * @return 세션키가 유효한지 여부
+   */
+  function isValidSession() {
+    let customClaims = request.auth.token;
+    return ('sessionKey' in customClaims) &&
+           ('sessionExpiry' in customClaims) &&
+           (customClaims.sessionKey is string) &&
+           (customClaims.sessionKey != "") &&
+           (request.time.seconds() <= customClaims.sessionExpiry);
+  }
+
+}

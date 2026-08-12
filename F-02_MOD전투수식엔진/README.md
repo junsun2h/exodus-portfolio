@@ -45,6 +45,28 @@ flowchart LR
 - **슬라이드 자료**: 3종 연산자 수식 + 9단계 파이프라인 다이어그램 — **다이어그램 필요** / 브레이크다운 덤프 출력 예시 — **캡처 필요**
 
 
+<!-- IMAGES:START -->
+## 화면
+
+![MOD 정의 시트 — 연산자가 이름 접미사에 들어 있다](img/mod-sheet.webp)
+
+<sub><b>MOD 271종의 원본 정의 시트다.</b> 여기서 볼 것은 데이터가 아니라 <b>이름 규칙</b>이다 —
+같은 "모든 피해"가 세 줄로 나뉘어 있고, 그 셋이 정확히 위의 3종 연산자다.<br>
+<code>mod_all_damage</code>(<code>FLOAT</code>) = <b>Flat</b> ·
+<code>mod_all_damage_inc</code>(<code>FLOAT_PER</code>) = <b>Increased</b> ·
+<code>mod_all_damage_more</code>(<code>FLOAT_PER</code>) = <b>More</b>.
+<b>접미사가 곧 연산자</b>라서 MOD를 추가할 때 "이건 합산인가 곱셈인가"를 별도 컬럼으로 관리할 필요가 없고,
+이름만 보고 <code>ModCalculator</code>의 어느 누산기로 갈지 정해진다.<br>
+설명 문자열의 <code>[incdec]</code> / <code>[moreless]</code> 도 장식이 아니다. 부호에 따라 런타임에 치환된다 —
+<code>[incdec]</code>는 <b>증가/감소</b>, <code>[moreless]</code>는 <b>증폭/감폭</b>
+(<code>GameUtility.cs</code> 1670~1683행). 한 MOD당 문자열을 <b>하나만</b> 두고 +10%와 −10%를 같은 템플릿으로 처리한다.
+<code>{value1}</code> 자리표시자까지 합쳐, 시트 한 줄이 <b>연산 방식·표시 문구·부호 처리</b>를 동시에 정의한다.<br>
+<code>enum_index</code>는 1000번대 블록을 카테고리 단위로 쓰고, 중간에 빈 번호가 그대로 남아 있다
+(1028 다음이 1032 — <code>CommonEnum.cs</code> 96~105행에서도 동일). <b>번호를 다시 채우지 않는 것</b>이 규칙이다.
+열거값은 유저 데이터에 그대로 저장되므로, 빈자리를 메우려고 재번호를 매기는 순간 저장된 값의 의미가 뒤바뀐다.</sub>
+
+<!-- IMAGES:END -->
+
 ## 수록 파일
 
 - `Assets/Source/Logic/Battle/BattleMode/BattleModeBase.cs`

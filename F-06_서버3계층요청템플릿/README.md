@@ -33,10 +33,11 @@ flowchart TB
 - **해결**: **3계층 상속 템플릿**으로 고정했다.
   - `CTemplateBase` → `C[Feature]Base` → `C[Feature]_[Action]`
   - 최상위 베이스가 `setUp → execute → updateToDB` **생명주기를 강제**하고, 인증·세션·레이트리밋·에러핸들링을 일괄 처리한다. 파생 클래스는 **try/catch를 쓰지 않는다** — 예외는 베이스가 잡아 규격화된 응답으로 변환한다. 즉 **보안 검사를 빠뜨리는 것이 구조적으로 불가능**하다.
-  - 함수 설정은 **Function Preset 4단계**(`LITE` / `STANDARD` / `HEAVY` / `SCHEDULE`)로 표준화했다. 엔드포인트마다 메모리·동시성·타임아웃을 개별 지정하는 대신 프리셋을 선택한다. 콜드스타트와 비용이 프리셋 단위로 통제된다.
+  - 함수 설정은 **Function Preset 4단계**(`LITE` / `STANDARD` / `HEAVY` / `SCHEDULE`)로 표준화했다. 엔드포인트마다 메모리·동시성·타임아웃을 개별 지정하는 대신 프리셋을 선택한다. 콜드스타트와 비용이 프리셋 단위로 통제된다. → 프리셋 값의 근거(실제 OOM 사고)와 HEAVY 알고리즘 최적화는 [F-50](../F-50_CloudFunctions자원프리셋/) 이 따로 다룬다.
 - **기술**: TypeScript 추상 클래스 상속 체인, 템플릿 메서드 패턴, Firebase Functions v2 `GlobalOptions` 프리셋, `onCall`/`onRequest`/`onSchedule` 분리
 - **정량**:
-  - 엔드포인트 **153개** — `onCall` 127 / `onRequest` 11 / `onSchedule` 15
+  - 엔드포인트 **126개**(`onCall`) + 스케줄 함수 13종(현재 비활성, [F-52](../F-52_서버스케줄러자동화/))
+  - 프리셋 배분 — `LITE` 73 / `STANDARD` 17 / `HEAVY` 32 / `SCHEDULE` 4
   - `RequestBase.ts` 465줄이 전체 요청의 공통 경로
   - 클라 대응 열거형 `ERequestHttpsCallType` 95종
 - **근거**:

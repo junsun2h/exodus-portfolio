@@ -1,0 +1,15 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // databundle 폴더: 공개 읽기 (클라이언트 다운로드용)
+    match /databundle/{fileName} {
+      allow read: if true;
+      allow write: if false;
+    }
+    // 다른 모든 경로는 접근 금지
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

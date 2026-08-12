@@ -42,6 +42,24 @@ flowchart LR
 - **슬라이드 자료**: C# SSOT → 생성 → TS/JSON/마이그레이션 팬아웃 다이어그램 + 4,810줄 → 134,348줄 대비 — **다이어그램 필요**
 
 
+<!-- IMAGES:START -->
+## 화면
+
+![Code Generator 창 — 생성기별 출력 경로가 그대로 노출된다](img/codegen-window.webp)
+
+<sub><b>생성기 창이다.</b> 각 블록이 생성 대상 하나이고, 옆의 경로가 <b>그 결과가 떨어지는 자리</b>다.
+여기서 보이는 게 이 파이프라인의 요지다 — <code>CommonEnum</code> 한 정의에서
+<code>CommonEnum.cs</code>(Unity)와 <code>CommonEnum.ts</code>(Firebase Functions)가 <b>동시에</b> 나온다.
+<b>C# 원본 하나 → 두 런타임</b>이라 타입이 어긋날 여지가 구조적으로 없다.<br>
+맨 위 <code>Generate All (원클릭)</code> 아래에 <code>Clear ParseJsonNode (컴파일 에러 시)</code> 가 따로 있는 것이
+실무에서 나온 흔적이다. 생성물인 <code>ParseJsonNode</code> 계열이 깨지면 <b>프로젝트가 컴파일되지 않고,
+그러면 생성기 자체가 실행되지 않는다</b> — 고치려면 생성기를 돌려야 하는데 돌릴 수가 없는 교착이다.
+그래서 이 버튼만 에디터 코드가 아니라 <b>외부 배치 파일</b>(<code>Batch/ClearParseJsonNode.bat</code>)을
+<code>cmd.exe</code>로 띄운다(<code>CodeGenerateEditor.cs</code> 348~359행). 컴파일이 죽어도 도는 유일한 경로라서다.<br>
+<sub>※ 경로 필드의 로컬 절대경로는 캡처 원본 그대로입니다(코드 쪽은 <code>&lt;project-root&gt;</code>로 치환).</sub></sub>
+
+<!-- IMAGES:END -->
+
 ## 수록 파일
 
 - `Assets/Editor/Script/CodeGenerator/CodeGenerateEditor.cs`
