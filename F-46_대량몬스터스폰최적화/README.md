@@ -49,6 +49,22 @@ flowchart TB
 - **슬라이드 자료**: 4갈래 병목 분해도 + 20 vs 60 스폰 화면 비교 — **다이어그램 필요** + **캡처 필요**
 
 
+<!-- IMAGES:START -->
+## 화면
+
+> **녹화 대기 중.** 아래 경로에 파일을 넣으면 이 자리에 붙는다.
+>
+> | | |
+> |---|---|
+> | 경로 | `img/spawn-20.png`, `img/spawn-60.png` |
+> | 내용 | 같은 스테이지·같은 카메라 각도에서 동시 스폰 20마리 / 60마리 |
+> | 권장 | 1920x1080 PNG. 두 장의 카메라 위치가 같아야 비교가 성립한다 |
+>
+> 가능하면 Stats 오버레이(FPS·배치 수)를 켠 채로 찍으면 "60마리인데 프레임이 유지된다"가
+> 화면 안에서 증명된다.
+
+<!-- IMAGES:END -->
+
 ## 수록 파일
 
 - `Assets/Source/Logic/Data/GameClientPlayConfig/GameClientPlayConfig.Spawn.cs`
