@@ -6,11 +6,11 @@ namespace PX
 {
     public class CameraComponent : PXMonoBehaviour
     {
-        //ī�޶� ��ġ
+        //추종 대상 기준 카메라 오프셋. 대상 위치에 이 값을 더한 곳이 카메라의 목표 지점이다
         public Vector3 cameraCheckPosition = new Vector3(0, 0, 0);
-        //ī�޶� �������� �ӵ�
+        //카메라 보간 속도. 0이면 보간 없이 목표 지점으로 즉시 붙는다
         public float cameraSmoothSpeed = 0;
-        //ī�޶� ĳ���� ���� �Ÿ�
+        //카메라를 대상의 전방으로 더 밀어내는 거리. 0이면 밀지 않는다
         public float cameraFrontViewDistance = 0;
 
         private Transform currentViewCamera;
@@ -160,19 +160,19 @@ namespace PX
 
                 if (currentCameraCharacter != null)
                 {
-                    // ī�޶� ��ġ�� ��� ��ġ�� �̵�
+                    //추종 대상의 XZ 위치에 오프셋을 더해 카메라 목표 지점을 잡는다 (Y는 오프셋이 정한다)
                     Vector3 characterPosition = currentCameraCharacter.CenterWorldPosition;
                     Vector3 desiredPosition = new Vector3(characterPosition.x, 0, characterPosition.z);
                     desiredPosition += cameraCheckPosition;
 
-                    //ĳ���� �������� ���� �� �̵�
+                    //대상이 보는 방향으로 목표 지점을 더 밀어 진행 방향이 더 넓게 보이게 한다
                     if (cameraFrontViewDistance > 0)
                     {
                         desiredPosition += currentCameraCharacter.GetTransform.forward * cameraFrontViewDistance;
                     }
 
                     Vector3 smoothedPosition = desiredPosition;
-                    //���� ����
+                    //보간 적용
                     if (cameraSmoothSpeed > 0)
                     {
                         //보간 기준은 흔들림을 뺀 위치여야 한다.
