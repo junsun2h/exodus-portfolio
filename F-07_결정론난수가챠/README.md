@@ -42,6 +42,16 @@ sequenceDiagram
 - **슬라이드 자료**: 클라 예측 + 서버 검증 시퀀스 다이어그램 — **다이어그램 필요**
 
 
+
+<!-- IMAGES:START -->
+## 화면
+
+![뽑기 화면 — x10 / x30 / x300 이 서버 1회 왕복으로 처리된다](img/gacha.webp)
+
+<sub>뽑기 화면 — x10 / x30 / x300 이 서버 1회 왕복으로 처리된다</sub>
+
+<!-- IMAGES:END -->
+
 ## 수록 파일
 
 - `Assets/Source/Logic/ClientGacha/ClientGacha.cs`

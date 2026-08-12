@@ -3,6 +3,9 @@
 > 소스 발췌: `src/` — 14개 파일
 >
 > 커스텀 커맨드 31종 중 **대표 9종** + 훅 3종 전부 + 스킬 3종. 훅(`block-bash-token-bomb.mjs` 등)이 규칙을 문서가 아닌 차단으로 강제하는 부분이다.
+>
+> 스킬의 `references/` 하위 문서(약 3,000줄)는 분량 때문에 제외했다. 그래서 `SKILL.md` 안의
+> `references/tools-reference.md`, `references/workflows.md` 링크는 이 리포에서 열리지 않는다.
 
 **구간** Phase 3 (2026.03 ~ 08) | **포지션** TD | **AI** 오케스트레이션
 

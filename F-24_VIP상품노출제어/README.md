@@ -21,6 +21,18 @@
 - **슬라이드 자료**: 3축 노출 제어 매트릭스 — **다이어그램 필요**
 
 
+
+<!-- IMAGES:START -->
+## 화면
+
+노출 제어가 적용되는 상점 화면. 좌측 탭(일반·패키지·구독·마일리지)이 상품 축이다.
+
+![상점 — 카테고리 탭 + 상품 그리드](img/store.webp)
+
+<sub>상점 — 카테고리 탭 + 상품 그리드</sub>
+
+<!-- IMAGES:END -->
+
 ## 수록 파일
 
 - `FirebaseCLI/functions/src/API/CoreData/Product.ts`
